@@ -1,0 +1,281 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<MicomToolCommonProjectFile Version="1.00">
+  <CreatorType Name="CubeSuite+" Version="V8.09.00  [12 Dec 2022]" />
+  <Placeholders>
+    <PlaceholderPrefix>%</PlaceholderPrefix>
+    <PlaceholderPostfix>%</PlaceholderPostfix>
+  </Placeholders>
+  <Project Name="PMVA_Cluster_Software" Type="Application">
+    <Files>
+      <Path>cstart.asm</Path>
+      <Path>hdwinit.asm</Path>
+      <Path>stkinit.asm</Path>
+      <Path>iodefine.h</Path>
+      <Category Name="GEMPL">
+        <Category Name="INT_EEPROM">
+          <Path>GEMPL\INT_EEPROM\eel.h</Path>
+          <Path>GEMPL\INT_EEPROM\eel.inc</Path>
+          <Path>GEMPL\INT_EEPROM\eel.lib</Path>
+          <Path>GEMPL\INT_EEPROM\eel_descriptor.c</Path>
+          <Path>GEMPL\INT_EEPROM\eel_descriptor.h</Path>
+          <Path>GEMPL\INT_EEPROM\eel_fdl_main.c</Path>
+          <Path>GEMPL\INT_EEPROM\eel_types.h</Path>
+          <Path>GEMPL\INT_EEPROM\eel_types.inc</Path>
+          <Path>GEMPL\INT_EEPROM\eel_user_types.h</Path>
+          <Path>GEMPL\INT_EEPROM\fdl.h</Path>
+          <Path>GEMPL\INT_EEPROM\fdl.inc</Path>
+          <Path>GEMPL\INT_EEPROM\fdl.lib</Path>
+          <Path>GEMPL\INT_EEPROM\fdl_descriptor.c</Path>
+          <Path>GEMPL\INT_EEPROM\fdl_descriptor.h</Path>
+          <Path>GEMPL\INT_EEPROM\fdl_types.h</Path>
+        </Category>
+        <Category Name="Headers">
+          <Path>GEMPL\Headers\Animation.h</Path>
+          <Path>GEMPL\Headers\Battery_Symbol.h</Path>
+          <Path>GEMPL\Headers\Calculations.h</Path>
+          <Path>GEMPL\Headers\ChargingScreenLogic.h</Path>
+          <Path>GEMPL\Headers\Cluster_Data_Update.h</Path>
+          <Path>GEMPL\Headers\Digital_Inputs.h</Path>
+          <Path>GEMPL\Headers\Digital_Outputs.h</Path>
+          <Path>GEMPL\Headers\DisChargingScreenLogic.h</Path>
+          <Path>GEMPL\Headers\Feature_Config.h</Path>
+          <Path>GEMPL\Headers\GEM_can.h</Path>
+          <Path>GEMPL\Headers\GEM_common_header.h</Path>
+          <Path>GEMPL\Headers\GEM_LCD_Telltales.h</Path>
+          <Path>GEMPL\Headers\Init.h</Path>
+          <Path>GEMPL\Headers\Service_Alert.h</Path>
+          <Path>GEMPL\Headers\Temperature_symbol.h</Path>
+          <Path>GEMPL\Headers\Thermal_Runaway.h</Path>
+          <Path>GEMPL\Headers\Buzzer.h</Path>
+          <Path>RTC.h</Path>
+          <Path>GEMPL\Headers\Analog_Voltage.h</Path>
+          <Path>GEMPL\Headers\Delay.h</Path>
+          <Path>GEMPL\Headers\Timer.h</Path>
+          <Path>Bluetooth.h</Path>
+        </Category>
+        <Category Name="Renesas_MCAL">
+          <Path>GEMPL\Renesas_MCAL\r_cg_cgc.c</Path>
+          <Path>GEMPL\Renesas_MCAL\r_cg_it.h</Path>
+          <Path>GEMPL\Renesas_MCAL\r_cg_it_user.c</Path>
+          <Path>GEMPL\Renesas_MCAL\r_cg_it.c</Path>
+          <Path>GEMPL\Renesas_MCAL\r_cg_cgc.h</Path>
+          <Path>GEMPL\Renesas_MCAL\r_cg_cgc_user.c</Path>
+          <Path>GEMPL\Renesas_MCAL\r_cg_macrodriver.h</Path>
+          <Path>GEMPL\Renesas_MCAL\r_cg_port.c</Path>
+          <Path>GEMPL\Renesas_MCAL\r_cg_port.h</Path>
+          <Path>GEMPL\Renesas_MCAL\r_cg_port_user.c</Path>
+          <Path>GEMPL\Renesas_MCAL\r_cg_timer.c</Path>
+          <Path>GEMPL\Renesas_MCAL\r_cg_timer.h</Path>
+          <Path>GEMPL\Renesas_MCAL\r_cg_timer_user.c</Path>
+          <Path>GEMPL\Renesas_MCAL\r_cg_userdefine.h</Path>
+          <Path>GEMPL\Renesas_MCAL\r_systeminit.c</Path>
+          <Path>GEMPL\Renesas_MCAL\r_cg_adc_user.c</Path>
+          <Path>GEMPL\Renesas_MCAL\r_cg_adc.c</Path>
+          <Path>GEMPL\Renesas_MCAL\r_cg_adc.h</Path>
+          <Path>GEMPL\Renesas_MCAL\r_cg_serial.c</Path>
+          <Path>GEMPL\Renesas_MCAL\r_cg_serial.h</Path>
+          <Path>..\..\..\Renesas_Drivers\PMVA_Cluster\applilet3_src\r_cg_serial_user.c</Path>
+        </Category>
+        <Path>GEMPL\r_main.c</Path>
+        <Category Name="CAN">
+          <Path>GEMPL\CAN\CAN_Configure.h</Path>
+          <Path>GEMPL\CAN\my_can.c</Path>
+          <Path>GEMPL\CAN\my_can.h</Path>
+        </Category>
+        <Category Name="LCD">
+          <Path>GEMPL\LCD\lcd.c</Path>
+          <Path>GEMPL\LCD\lcd.h</Path>
+          <Path>GEMPL\LCD\lcd_segments.c</Path>
+          <Path>GEMPL\LCD\lcd_segments.h</Path>
+        </Category>
+        <Category Name="Source">
+          <Path>GEMPL\Source\Animation.c</Path>
+          <Path>GEMPL\Source\Battery_Symbol.c</Path>
+          <Path>GEMPL\Source\Calculations.c</Path>
+          <Path>GEMPL\Source\ChargingScreenLogic.c</Path>
+          <Path>GEMPL\Source\Cluster_Data_Update.c</Path>
+          <Path>GEMPL\Source\Digital_Inputs.c</Path>
+          <Path>GEMPL\Source\Digital_Outputs.c</Path>
+          <Path>GEMPL\Source\Service_Alert.c</Path>
+          <Path>GEMPL\Source\DisChargingScreenLogic.c</Path>
+          <Path>GEMPL\Source\GEM_can.c</Path>
+          <Path>GEMPL\Source\GEM_LCD_Telltales.c</Path>
+          <Path>GEMPL\Source\Init.c</Path>
+          <Path>GEMPL\Source\Temperature_symbol.c</Path>
+          <Path>GEMPL\Source\Thermal_Runaway.c</Path>
+          <Path>GEMPL\Source\Memory_Access.c</Path>
+          <Path>GEMPL\Source\Buzzer.c</Path>
+          <Path>GEMPL\Source\RTC.c</Path>
+          <Path>GEMPL\Source\CAN_TX.c</Path>
+          <Path>GEMPL\Source\Gokul_CAN.c</Path>
+          <Path>GEMPL\Source\Analog_Voltage.c</Path>
+          <Path>GEMPL\Source\Delay.c</Path>
+          <Path>GEMPL\Source\Timer.c</Path>
+          <Path>Bluetooth.c</Path>
+        </Category>
+      </Category>
+    </Files>
+    <DebugOptions>
+      <ConnectSettings>
+        <MainClock>0</MainClock>
+      </ConnectSettings>
+      <DebugToolSettings />
+    </DebugOptions>
+    <Device Series="RL78">R5F10DMF</Device>
+    <BuildOptions Name="CC-RL" Version="V1.12.00">
+      <BuildMode Name="DefaultBuild" Active="True">
+        <LinkOrder>
+          <Path>DefaultBuild\cstart.obj</Path>
+          <Path>DefaultBuild\stkinit.obj</Path>
+          <Path>DefaultBuild\r_main.obj</Path>
+          <Path>DefaultBuild\r_cg_cgc.obj</Path>
+          <Path>DefaultBuild\r_cg_cgc_user.obj</Path>
+          <Path>DefaultBuild\r_cg_port.obj</Path>
+          <Path>DefaultBuild\r_cg_port_user.obj</Path>
+          <Path>DefaultBuild\r_cg_timer.obj</Path>
+          <Path>DefaultBuild\r_cg_timer_user.obj</Path>
+          <Path>DefaultBuild\r_systeminit.obj</Path>
+          <Path>DefaultBuild\Animation.obj</Path>
+          <Path>DefaultBuild\Battery_Symbol.obj</Path>
+          <Path>DefaultBuild\Calculations.obj</Path>
+          <Path>DefaultBuild\ChargingScreenLogic.obj</Path>
+          <Path>DefaultBuild\Cluster_Data_Update.obj</Path>
+          <Path>DefaultBuild\Digital_Inputs.obj</Path>
+          <Path>DefaultBuild\Digital_Outputs.obj</Path>
+          <Path>DefaultBuild\DisChargingScreenLogic.obj</Path>
+          <Path>DefaultBuild\GEM_can.obj</Path>
+          <Path>DefaultBuild\GEM_LCD_Telltales.obj</Path>
+          <Path>DefaultBuild\Init.obj</Path>
+          <Path>DefaultBuild\Temperature_symbol.obj</Path>
+          <Path>DefaultBuild\Thermal_Runaway.obj</Path>
+          <Path>DefaultBuild\lcd.obj</Path>
+          <Path>DefaultBuild\lcd_segments.obj</Path>
+          <Path>DefaultBuild\my_can.obj</Path>
+          <Path>DefaultBuild\Service_Alert.obj</Path>
+          <Path>DefaultBuild\eel_descriptor.obj</Path>
+          <Path>DefaultBuild\eel_fdl_main.obj</Path>
+          <Path>DefaultBuild\fdl_descriptor.obj</Path>
+          <Path>DefaultBuild\Memory_Access.obj</Path>
+          <Path>DefaultBuild\Buzzer.obj</Path>
+          <Path>DefaultBuild\r_cg_it_user.obj</Path>
+          <Path>DefaultBuild\r_cg_it.obj</Path>
+          <Path>DefaultBuild\RTC.obj</Path>
+          <Path>DefaultBuild\CAN_TX.obj</Path>
+          <Path>DefaultBuild\Gokul_CAN.obj</Path>
+          <Path>DefaultBuild\r_cg_adc_user.obj</Path>
+          <Path>DefaultBuild\r_cg_adc.obj</Path>
+          <Path>DefaultBuild\Analog_Voltage.obj</Path>
+          <Path>DefaultBuild\Delay.obj</Path>
+          <Path>DefaultBuild\Timer.obj</Path>
+          <Path>DefaultBuild\r_cg_serial.obj</Path>
+          <Path>DefaultBuild\r_cg_serial_user.obj</Path>
+          <Path>DefaultBuild\Bluetooth.obj</Path>
+          <Path>GEMPL\INT_EEPROM\eel.lib</Path>
+          <Path>GEMPL\INT_EEPROM\fdl.lib</Path>
+        </LinkOrder>
+        <CommonOptions>
+          <IncludePathForC>..\..\..\Renesas_Drivers\PMVA_Cluster\applilet3_src</IncludePathForC>
+          <IncludePathForC>GEMPL\INT_EEPROM</IncludePathForC>
+          <IncludePathForC>GEMPL\CAN</IncludePathForC>
+          <IncludePathForC>..\..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\CAN</IncludePathForC>
+          <IncludePathForC>..\..\Thanushree\PMVA_Cluster_Software\GEMPL\LCD</IncludePathForC>
+          <IncludePathForC>..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\Timer</IncludePathForC>
+          <IncludePathForC>..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\Sys</IncludePathForC>
+          <IncludePathForC>..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\SPI</IncludePathForC>
+          <IncludePathForC>..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\Port</IncludePathForC>
+          <IncludePathForC>..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\Macro</IncludePathForC>
+          <IncludePathForC>..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\INT_EEPROM</IncludePathForC>
+          <IncludePathForC>..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\GPIO</IncludePathForC>
+          <IncludePathForC>..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\EEPROM</IncludePathForC>
+          <IncludePathForC>..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\delay</IncludePathForC>
+          <IncludePathForC>..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\CAN</IncludePathForC>
+          <IncludePathForC>..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\Calc</IncludePathForC>
+          <IncludePathForC>GEMPL\LCD</IncludePathForC>
+          <IncludePathForC>..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\LCD</IncludePathForC>
+          <IncludePathForC>GEMPL\Renesas_MCAL</IncludePathForC>
+          <IncludePathForC>GEMPL\Headers</IncludePathForC>
+          <IncludePathForC>Renesas_MCAL</IncludePathForC>
+          <IncludePathForC>.</IncludePathForC>
+          <IncludePathForAsm>GEMPL\INT_EEPROM</IncludePathForAsm>
+        </CommonOptions>
+        <GeneralOptions>
+          <SimultaneouslyBuild>False</SimultaneouslyBuild>
+        </GeneralOptions>
+        <CompileOptions>
+          <Option>-cpu=S2</Option>
+          <Option>-obj_path=%BuildModeName%</Option>
+          <Option>-dev=%MicomToolPath%\Device\RL78\Devicefile\DR5F10DMF.DVF</Option>
+          <Option>-g</Option>
+          <Option>-g_line</Option>
+          <Option>-I ..\..\..\Renesas_Drivers\PMVA_Cluster\applilet3_src</Option>
+          <Option>-I GEMPL\INT_EEPROM</Option>
+          <Option>-I GEMPL\CAN</Option>
+          <Option>-I ..\..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\CAN</Option>
+          <Option>-I ..\..\Thanushree\PMVA_Cluster_Software\GEMPL\LCD</Option>
+          <Option>-I ..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\Timer</Option>
+          <Option>-I ..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\Sys</Option>
+          <Option>-I ..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\SPI</Option>
+          <Option>-I ..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\Port</Option>
+          <Option>-I ..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\Macro</Option>
+          <Option>-I ..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\INT_EEPROM</Option>
+          <Option>-I ..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\GPIO</Option>
+          <Option>-I ..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\EEPROM</Option>
+          <Option>-I ..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\delay</Option>
+          <Option>-I ..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\CAN</Option>
+          <Option>-I ..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\Calc</Option>
+          <Option>-I GEMPL\LCD</Option>
+          <Option>-I ..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\LCD</Option>
+          <Option>-I GEMPL\Renesas_MCAL</Option>
+          <Option>-I GEMPL\Headers</Option>
+          <Option>-I Renesas_MCAL</Option>
+          <Option>-I .</Option>
+          <Option>-lang=c99</Option>
+          <Option>-c</Option>
+        </CompileOptions>
+        <AssembleOptions>
+          <Option>-cpu=S2</Option>
+          <Option>-obj_path=%BuildModeName%</Option>
+          <Option>-dev=%MicomToolPath%\Device\RL78\Devicefile\DR5F10DMF.DVF</Option>
+          <Option>-g</Option>
+          <Option>-I GEMPL\INT_EEPROM</Option>
+          <Option>-c</Option>
+        </AssembleOptions>
+        <LinkOptions>
+          <Option>-SECURITY_ID=00000000000000000000</Option>
+          <Option>-DEVICE=%MicomToolPath%\Device\RL78\Devicefile\DR5F10DMF.DVF</Option>
+          <Option>-DEBug</Option>
+          <Option>-NOCOmpress</Option>
+          <Option>-NOOPtimize</Option>
+          <Option>-OUtput=%BuildModeName%\%ProjectName%.abs</Option>
+          <Option>-LIBrary=%MicomToolPath%\CC-RL\V1.12.00\lib\rl78cm4s99.lib</Option>
+          <Option>-LIBrary=%MicomToolPath%\CC-RL\V1.12.00\lib\malloc_n.lib</Option>
+          <Option>-LIBrary=%MicomToolPath%\CC-RL\V1.12.00\lib\rl78cm4r.lib</Option>
+          <Option>-OCDBG=84</Option>
+          <Option>-DEBUG_MONITOR=17E00-17FFF</Option>
+          <Option>-USER_OPT_BYTE=EFFF08</Option>
+          <Option>-LISt=%BuildModeName%\%ProjectName%.map</Option>
+          <Option>-AUTO_SECTION_LAYOUT</Option>
+          <Option>-ROm=.data=.dataR</Option>
+          <Option>-ROm=.sdata=.sdataR</Option>
+          <Option>-NOMessage</Option>
+          <Option>-MEMory=High</Option>
+          <Option>-NOLOgo</Option>
+          <Option>-END</Option>
+          <Option>-Input=%BuildModeName%\%ProjectName%.abs</Option>
+          <Option>-DEVICE=%MicomToolPath%\Device\RL78\Devicefile\DR5F10DMF.DVF</Option>
+          <Option>-OUtput=%BuildModeName%\%ProjectName%.mot</Option>
+          <Option>-FOrm=Stype</Option>
+          <Option>-NOMessage</Option>
+          <Option>-EXIt</Option>
+        </LinkOptions>
+        <IOHeaderGenerationOptions>
+          <Option>-df=%MicomToolPath%\Device\RL78\Devicefile\DR5F10DMF.DVF</Option>
+          <Option>-o=%ProjectDir%\iodefine.h</Option>
+          <Option>-f</Option>
+          <UpdateIOMode>None</UpdateIOMode>
+        </IOHeaderGenerationOptions>
+        <NoTargetFile Target="hdwinit.asm" />
+      </BuildMode>
+    </BuildOptions>
+  </Project>
+</MicomToolCommonProjectFile>

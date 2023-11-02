@@ -1,0 +1,321 @@
+QualityReport
+02 November 2023 12:42:49
+
+------ Start build(PMVA_Cluster_Software, DefaultBuild) ------
+C:\Program Files (x86)\Renesas Electronics\CS+\CC\CC-RL\V1.12.00\Bin\ccrl.exe Bluetooth.c -cpu=S2 -o DefaultBuild\Bluetooth.obj "-dev=C:\Program Files (x86)\Renesas Electronics\CS+\CC\Device\RL78\Devicefile\DR5F10DMF.DVF" -g -g_line -I ..\..\..\Renesas_Drivers\PMVA_Cluster\applilet3_src -I GEMPL\INT_EEPROM -I GEMPL\CAN -I ..\..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\CAN -I ..\..\Thanushree\PMVA_Cluster_Software\GEMPL\LCD -I ..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\Timer -I ..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\Sys -I ..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\SPI -I ..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\Port -I ..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\Macro -I ..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\INT_EEPROM -I ..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\GPIO -I ..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\EEPROM -I ..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\delay -I ..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\CAN -I ..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\Calc -I GEMPL\LCD -I ..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\LCD -I GEMPL\Renesas_MCAL -I GEMPL\Headers -I Renesas_MCAL -I . -lang=c99 -c -msg_lang=english
+W0511106:The folder "..\..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\CAN" specified by the "-I" option is not found.
+W0511106:The folder "..\..\Thanushree\PMVA_Cluster_Software\GEMPL\LCD" specified by the "-I" option is not found.
+W0511106:The folder "..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\Timer" specified by the "-I" option is not found.
+W0511106:The folder "..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\Sys" specified by the "-I" option is not found.
+W0511106:The folder "..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\SPI" specified by the "-I" option is not found.
+W0511106:The folder "..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\Port" specified by the "-I" option is not found.
+W0511106:The folder "..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\Macro" specified by the "-I" option is not found.
+W0511106:The folder "..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\INT_EEPROM" specified by the "-I" option is not found.
+W0511106:The folder "..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\GPIO" specified by the "-I" option is not found.
+W0511106:The folder "..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\EEPROM" specified by the "-I" option is not found.
+W0511106:The folder "..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\delay" specified by the "-I" option is not found.
+W0511106:The folder "..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\CAN" specified by the "-I" option is not found.
+W0511106:The folder "..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\Calc" specified by the "-I" option is not found.
+W0511106:The folder "..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\LCD" specified by the "-I" option is not found.
+W0511106:The folder "Renesas_MCAL" specified by the "-I" option is not found.
+W0511187:The evaluation period for the option "-Odefault" of CC-RL V1 has expired. It is implicitly changed to "-Olite". Please consider purchasing the product to continue using "-Odefault". By explicitly specifying "-Olite" or "-Onothing", this warning message disappears. 
+Bluetooth.c(8):W0523076:Function declarations should have prototype
+Bluetooth.c(10):W0520177:Variable "temporary_array" was declared but never referenced
+C:\Program Files (x86)\Renesas Electronics\CS+\CC\CC-RL\V1.12.00\Bin\rlink.exe -subcommand=DefaultBuild\PMVA_Cluster_Software.clnk
+W0561017:Paid license of CC-RL V1 is not found, and the evaluation period has expired. Please consider purchasing the product.
+W0561017:Paid license of CC-RL V1 is not found, and the evaluation period has expired. Please consider purchasing the product.
+Renesas Optimizing Linker Completed
+------ Build ended(Error:0, Warning:20)(PMVA_Cluster_Software, DefaultBuild) ------
+
+--- CommandFile 1 ---
+DefaultBuild\PMVA_Cluster_Software.clnk :
+-Input=DefaultBuild\cstart.obj
+-Input=DefaultBuild\stkinit.obj
+-Input=DefaultBuild\r_main.obj
+-Input=DefaultBuild\r_cg_cgc.obj
+-Input=DefaultBuild\r_cg_cgc_user.obj
+-Input=DefaultBuild\r_cg_port.obj
+-Input=DefaultBuild\r_cg_port_user.obj
+-Input=DefaultBuild\r_cg_timer.obj
+-Input=DefaultBuild\r_cg_timer_user.obj
+-Input=DefaultBuild\r_systeminit.obj
+-Input=DefaultBuild\Animation.obj
+-Input=DefaultBuild\Battery_Symbol.obj
+-Input=DefaultBuild\Calculations.obj
+-Input=DefaultBuild\ChargingScreenLogic.obj
+-Input=DefaultBuild\Cluster_Data_Update.obj
+-Input=DefaultBuild\Digital_Inputs.obj
+-Input=DefaultBuild\Digital_Outputs.obj
+-Input=DefaultBuild\DisChargingScreenLogic.obj
+-Input=DefaultBuild\GEM_can.obj
+-Input=DefaultBuild\GEM_LCD_Telltales.obj
+-Input=DefaultBuild\Init.obj
+-Input=DefaultBuild\Temperature_symbol.obj
+-Input=DefaultBuild\Thermal_Runaway.obj
+-Input=DefaultBuild\lcd.obj
+-Input=DefaultBuild\lcd_segments.obj
+-Input=DefaultBuild\my_can.obj
+-Input=DefaultBuild\Service_Alert.obj
+-Input=DefaultBuild\eel_descriptor.obj
+-Input=DefaultBuild\eel_fdl_main.obj
+-Input=DefaultBuild\fdl_descriptor.obj
+-Input=DefaultBuild\Memory_Access.obj
+-Input=DefaultBuild\Buzzer.obj
+-Input=DefaultBuild\r_cg_it_user.obj
+-Input=DefaultBuild\r_cg_it.obj
+-Input=DefaultBuild\RTC.obj
+-Input=DefaultBuild\CAN_TX.obj
+-Input=DefaultBuild\Gokul_CAN.obj
+-Input=DefaultBuild\r_cg_adc_user.obj
+-Input=DefaultBuild\r_cg_adc.obj
+-Input=DefaultBuild\Analog_Voltage.obj
+-Input=DefaultBuild\Delay.obj
+-Input=DefaultBuild\Timer.obj
+-Input=DefaultBuild\r_cg_serial.obj
+-Input=DefaultBuild\r_cg_serial_user.obj
+-Input=DefaultBuild\Bluetooth.obj
+-LIBrary=GEMPL\INT_EEPROM\eel.lib
+-LIBrary=GEMPL\INT_EEPROM\fdl.lib
+-SECURITY_ID=00000000000000000000
+-DEVICE=C:\Program Files (x86)\Renesas Electronics\CS+\CC\Device\RL78\Devicefile\DR5F10DMF.DVF
+-DEBug
+-NOCOmpress
+-NOOPtimize
+-OUtput=DefaultBuild\PMVA_Cluster_Software.abs
+-LIBrary=C:\Program Files (x86)\Renesas Electronics\CS+\CC\CC-RL\V1.12.00\lib\rl78cm4s99.lib
+-LIBrary=C:\Program Files (x86)\Renesas Electronics\CS+\CC\CC-RL\V1.12.00\lib\malloc_n.lib
+-LIBrary=C:\Program Files (x86)\Renesas Electronics\CS+\CC\CC-RL\V1.12.00\lib\rl78cm4r.lib
+-OCDBG=84
+-DEBUG_MONITOR=17E00-17FFF
+-USER_OPT_BYTE=EFFF08
+-LISt=DefaultBuild\PMVA_Cluster_Software.map
+-AUTO_SECTION_LAYOUT
+-ROm=.data=.dataR
+-ROm=.sdata=.sdataR
+-NOMessage
+-MEMory=High
+-NOLOgo
+-end
+-Input=DefaultBuild\PMVA_Cluster_Software.abs
+-DEVICE=C:\Program Files (x86)\Renesas Electronics\CS+\CC\Device\RL78\Devicefile\DR5F10DMF.DVF
+-OUtput=DefaultBuild\PMVA_Cluster_Software.mot
+-FOrm=Stype
+-NOMessage
+-exit
+
+
+--- SHA1 hash value of output files ---
+D:\Greaves\Gokul\LatestCode\PMVA_Cluster_Software_10_OCt_2023\PMVA_Cluster_Software\DefaultBuild\PMVA_Cluster_Software.abs: ce978d1f3ffff7a8d0d0a369ab62416880b9ac78
+D:\Greaves\Gokul\LatestCode\PMVA_Cluster_Software_10_OCt_2023\PMVA_Cluster_Software\DefaultBuild\PMVA_Cluster_Software.mot: 7911f2157476c82aa0f225deccfc7e9496e55cc9
+
+
+--- System Information ---
+*OS Version
+ Microsoft Windows 10 Pro (-, 10.0.19045, WOW64)
+*Language
+ English (United States)
+*.NET Framework Version
+ Microsoft .NET Framework 4 [.NET 4.8 or later] (533325)
+
+--- Application Information ---
+*Product Name
+ CS+ for CC
+*Package Version
+ V8.09.00  [12 Dec 2022]
+*Version
+ V9.09.00.06 [12 Dec 2022]
+*Assembly Version
+ 3.12.10.1
+*Sales Area
+ Japan
+*Product License
+ 
+*Execution Place
+ C:\Program Files (x86)\Renesas Electronics\CS+\CC
+*Memory Usage
+ *Private Working Set
+  258 MB
+ *Number of GDI Objects
+  2104
+ *Number of USER Objects
+  1005
+ *Opened Files
+  6 editors, 6 files, 41 KB
+
+--- Build Tool Plug-in Information ---
+RH850 Build tool CC-RH Plug-in
+ *Version
+  V8.09.00.00 [07 Oct 2022]
+ *Assembly Version
+  1.1.10.12
+ *DLL File Name
+  BuildToolCCRH.dll
+RL78 Build tool CC-RL Plug-in
+ *Version
+  V8.09.00.01 [07 Oct 2022]
+ *Assembly Version
+  1.0.0.0
+ *DLL File Name
+  BuildToolCCRL.dll
+RX Build tool CC-RX Plug-in
+ *Version
+  V8.09.00.00 [07 Oct 2022]
+ *Assembly Version
+  3.12.10.1
+ *DLL File Name
+  BuildToolCCRX.dll
+RH850 Build tool GHS CCRH850 Plug-in
+ *Version
+  V1.07.00.00 [07 Oct 2022]
+ *Assembly Version
+  1.0.0.0
+ *DLL File Name
+  BuildToolGHSCCRH850.dll
+
+--- Debug Tool Plug-in Information ---
+Debugger Collection Plug-in
+ *Version
+  V8.09.00.03 [24 Nov 2022]
+ *Assembly Version
+  2.12.10.1
+ *DLL File Name
+  DebugToolCollection.dll
+
+--- Other Plug-in Information ---
+Code Generator Plug-in for RH850
+ *Version
+  V1.02.02.05 [25 May 2018]
+ *Assembly Version
+  1.0.0.0
+ *DLL File Name
+  CodeGeneratorRH850.dll
+Code Generator Plug-in
+ *Version
+  V4.08.06.01 [28 Oct 2022]
+ *Assembly Version
+  3.0.0.0
+ *DLL File Name
+  CodePart.dll
+Code Generator/PinView Plug-in
+ *Version
+  V2.10.07.02 [08 Nov 2021]
+ *Assembly Version
+  1.0.0.0
+ *DLL File Name
+  CodePart2.dll
+Debug Console Plug-in
+ *Version
+  V8.09.00.03 [24 Nov 2022]
+ *Assembly Version
+  8.9.0.0
+ *DLL File Name
+  DebugConsole.dll
+Quick and Effective tool solution - QE
+ *Version
+  V9.09.00.01 [18 Oct 2022]
+ *Assembly Version
+  1.15.10.16
+ *DLL File Name
+  InCarTools.dll
+Pin Configurator Plug-in
+ *Version
+  V1.54.01.01 [31 Jul 2014]
+ *Assembly Version
+  1.6.10.23
+ *DLL File Name
+  PinConfig.dll
+Program Analyzer Plug-in
+ *Version
+  V4.12.00.01 [14 Apr 2021]
+ *Assembly Version
+  3.12.11.9
+ *DLL File Name
+  ProgramAnalyzer.dll
+IronPython Console Plug-in
+ *Version
+  V1.45.00.03 [22 Nov 2022]
+ *Assembly Version
+  1.6.10.23
+ *DLL File Name
+  PythonConsole.dll
+Editor plug-in DLL
+ *Version
+  V1.19.00.01 [24 Oct 2022]
+ *Assembly Version
+  1.1.0.0
+ *DLL File Name
+  SEditor.dll
+Stack Usage Tracer
+ *Version
+  V1.05.00.02 [30 Jul 2014]
+ *Assembly Version
+  1.30.11.15
+ *DLL File Name
+  Stk.dll
+Update Manager Plug-in
+ *Version
+  V2.03.00.02 [29 Oct 2018]
+ *Assembly Version
+  1.13.6.20
+ *DLL File Name
+  Update.dll
+
+Debug Tool Common Interface
+ *Version
+  V8.09.00.03 [24 Nov 2022]
+ *Assembly Version
+  3.12.10.1
+ *DLL File Name
+  CommonDebuggerInterface.dll
+Device Information Common Interface
+ *Version
+  V9.09.00.01 [18 Oct 2022]
+ *Assembly Version
+  3.0.0.0
+ *DLL File Name
+  DeviceInformation.dll
+
+--- Main Project Information ---
+D:\Greaves\Gokul\LatestCode\PMVA_Cluster_Software_10_OCt_2023\PMVA_Cluster_Software\PMVA_Cluster_Software.mtpj
+Microcontroller Information
+ *R5F10DMF
+  *File Name: Version
+   RL78_Productlist.xml: V8.090000
+   R5F10DMF_common.xml: V1.10.00.XX.XX
+   DR5F10DMF.DVF: V1.01
+   -: -
+   -: -
+  
+
+Build Tool Information
+ *CC-RL
+   * Version of plug-in(*.dll)
+     V8.09.00.03 [04 Nov 2022]
+   * The Version of the Compiler Package
+     V1.12.00
+  
+ * The version of SMS Assembler
+   V1.00.00.01 [29 May 2020]
+ 
+
+Debug Tool Information
+ *RL78 E2
+  Debugger Library V8.09.00.03 [24 Nov 2022]
+  
+
+Other Tool Information
+ *None
+
+ *None
+
+ *None
+
+ *None
+
+ *Program Analyzer
+  *Version
+   V4.12.00.01 [14 Apr 2021]
+
+ *None
+
+

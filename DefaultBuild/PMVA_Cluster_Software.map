@@ -1,0 +1,126 @@
+Renesas Optimizing Linker (W3.05.00 )             02-Nov-2023 12:42:48
+
+*** Options ***
+
+-subcommand=DefaultBuild\PMVA_Cluster_Software.clnk
+-Input=DefaultBuild\cstart.obj
+-Input=DefaultBuild\stkinit.obj
+-Input=DefaultBuild\r_main.obj
+-Input=DefaultBuild\r_cg_cgc.obj
+-Input=DefaultBuild\r_cg_cgc_user.obj
+-Input=DefaultBuild\r_cg_port.obj
+-Input=DefaultBuild\r_cg_port_user.obj
+-Input=DefaultBuild\r_cg_timer.obj
+-Input=DefaultBuild\r_cg_timer_user.obj
+-Input=DefaultBuild\r_systeminit.obj
+-Input=DefaultBuild\Animation.obj
+-Input=DefaultBuild\Battery_Symbol.obj
+-Input=DefaultBuild\Calculations.obj
+-Input=DefaultBuild\ChargingScreenLogic.obj
+-Input=DefaultBuild\Cluster_Data_Update.obj
+-Input=DefaultBuild\Digital_Inputs.obj
+-Input=DefaultBuild\Digital_Outputs.obj
+-Input=DefaultBuild\DisChargingScreenLogic.obj
+-Input=DefaultBuild\GEM_can.obj
+-Input=DefaultBuild\GEM_LCD_Telltales.obj
+-Input=DefaultBuild\Init.obj
+-Input=DefaultBuild\Temperature_symbol.obj
+-Input=DefaultBuild\Thermal_Runaway.obj
+-Input=DefaultBuild\lcd.obj
+-Input=DefaultBuild\lcd_segments.obj
+-Input=DefaultBuild\my_can.obj
+-Input=DefaultBuild\Service_Alert.obj
+-Input=DefaultBuild\eel_descriptor.obj
+-Input=DefaultBuild\eel_fdl_main.obj
+-Input=DefaultBuild\fdl_descriptor.obj
+-Input=DefaultBuild\Memory_Access.obj
+-Input=DefaultBuild\Buzzer.obj
+-Input=DefaultBuild\r_cg_it_user.obj
+-Input=DefaultBuild\r_cg_it.obj
+-Input=DefaultBuild\RTC.obj
+-Input=DefaultBuild\CAN_TX.obj
+-Input=DefaultBuild\Gokul_CAN.obj
+-Input=DefaultBuild\r_cg_adc_user.obj
+-Input=DefaultBuild\r_cg_adc.obj
+-Input=DefaultBuild\Analog_Voltage.obj
+-Input=DefaultBuild\Delay.obj
+-Input=DefaultBuild\Timer.obj
+-Input=DefaultBuild\r_cg_serial.obj
+-Input=DefaultBuild\r_cg_serial_user.obj
+-Input=DefaultBuild\Bluetooth.obj
+-LIBrary=GEMPL\INT_EEPROM\eel.lib
+-LIBrary=GEMPL\INT_EEPROM\fdl.lib
+-SECURITY_ID=00000000000000000000
+-DEVICE=C:\Program Files (x86)\Renesas Electronics\CS+\CC\Device\RL78\Devicefile\DR5F10DMF.DVF
+-DEBug
+-NOCOmpress
+-NOOPtimize
+-OUtput=DefaultBuild\PMVA_Cluster_Software.abs
+-LIBrary=C:\Program Files (x86)\Renesas Electronics\CS+\CC\CC-RL\V1.12.00\lib\rl78cm4s99.lib
+-LIBrary=C:\Program Files (x86)\Renesas Electronics\CS+\CC\CC-RL\V1.12.00\lib\malloc_n.lib
+-LIBrary=C:\Program Files (x86)\Renesas Electronics\CS+\CC\CC-RL\V1.12.00\lib\rl78cm4r.lib
+-OCDBG=84
+-DEBUG_MONITOR=17E00-17FFF
+-USER_OPT_BYTE=EFFF08
+-LISt=DefaultBuild\PMVA_Cluster_Software.map
+-AUTO_SECTION_LAYOUT
+-ROm=.data=.dataR
+-ROm=.sdata=.sdataR
+-NOMessage
+-MEMory=High
+-NOLOgo
+-end
+
+*** Error information ***
+
+*** Mapping List ***
+
+SECTION                            START      END         SIZE   ALIGN
+.vect
+                                  00000000  0000007f        80   0
+.constf
+                                  00000080  00000080         0   2
+.init_array
+                                  00000080  00000080         0   2
+EEL_CNST_f
+                                  00000080  0000008a         b   2
+FDL_CNST_f
+                                  0000008c  00000095         a   2
+.sdata
+                                  00000080  00000080         0   2
+.option_byte
+                                  000000c0  000000c3         4   1
+.security_id
+                                  000000c4  000000cd         a   1
+.monitor1
+                                  000000ce  000000d7         a   1
+.data
+                                  000000d8  00000181        aa   2
+.text
+                                  00000182  0000034a       1c9   1
+EEL_CODE
+                                  0000034c  00000d8a       a3f   2
+FDL_CODE
+                                  00000d8c  00000faf       224   2
+.RLIB
+                                  00000fb0  000014b2       503   1
+.SLIB
+                                  000014b3  000014b9         7   1
+.const
+                                  00003000  000032fd       2fe   2
+.textf
+                                  000032fe  0000ac5d      7960   1
+.monitor2
+                                  00017e00  00017fff       200   1
+.bss
+                                  000fe700  000fe839       13a   2
+.dataR
+                                  000fe83a  000fe8e3        aa   2
+.sbss
+                                  000ffe20  000ffe20         0   2
+.sdataR
+                                  000ffe20  000ffe20         0   2
+EEL_SDAT
+                                  000ffe20  000ffe20         1   2
+FDL_SDAT
+                                  000ffe22  000ffe23         2   2

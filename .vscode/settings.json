@@ -1,0 +1,19 @@
+{
+    "files.associations": {
+        "animation.h": "c",
+        "r_cg_macrodriver.h": "c",
+        "gem_common_header.h": "c",
+        "r_cg_userdefine.h": "c",
+        "battery_symbol.h": "c",
+        "digital_outputs.h": "c",
+        "my_can.h": "c",
+        "gem_can.h": "c",
+        "chargingscreenlogic.h": "c",
+        "dischargingscreenlogic.h": "c",
+        "iodefine.h": "c",
+        "compare": "c",
+        "string.h": "c",
+        "r_cg_serial.h": "c",
+        "calculations.h": "c"
+    }
+}
