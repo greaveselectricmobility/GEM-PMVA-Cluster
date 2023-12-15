@@ -16,7 +16,6 @@
 #include "Buzzer.h"
 #include "lcd.h"
 #include "Timer.h"
-#include "Delay.h"
 
 //void GEM_Animation(BYTE_t *LCD_Data,Cluster_Data_t *Cluster_Data)
 /***********************************************************************************************************************
@@ -59,7 +58,7 @@ void GEM_Animation(Cluster_Data_t *Cluster_Data)
     while(count <= 22)
     {
         gem_ani_timer = get_GEM_Timer_Value();
-        if((gem_ani_timer - gem_ani_timer_prev) >= 2)
+        if(((gem_ani_timer - gem_ani_timer_prev) >= 2))
         {
             gem_ani_timer_prev = gem_ani_timer;
             if (count == 1)
@@ -101,7 +100,7 @@ void GEM_Animation(Cluster_Data_t *Cluster_Data)
                 }
                 else
                 {
-			        gem_Animation_text(Version_Number);
+			    gem_Animation_text(Version_Number);
                 }
                 count +=1;
                 count1++;
@@ -109,7 +108,7 @@ void GEM_Animation(Cluster_Data_t *Cluster_Data)
             }
         }
      //Set_LCD_Data(0);   
-	LED_OUTPUT_3(OUTPUT_LOW);
-    //LED_OUTPUT_4(OUTPUT_LOW);
+	LED_OUTPUT_3(OUTPUT_HIGH);
+    //LED_OUTPUT_4(OUTPUT_HIGH);
 	
 }

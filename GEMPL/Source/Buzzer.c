@@ -5,7 +5,6 @@
 #include "Buzzer.h"
 #include "Delay.h"
 #include "lcd.h"
-#include "Timer.h"
 
 /***********************************************************************************************************************
 * Function Name: Buzzer_frequency
@@ -91,7 +90,6 @@ void Buzzer_check(Cluster_Data_t *Cluster_Data,uint32_t gem_timer)
 
 		Buzzer_frequency(0,DISABLE,gem_timer);
 	    Buzzer_state = ON;
-        Cluster_Data->CAN_Tx_TT.Buzzer = 1;
         //Thermal_Runaway_Symbol_State = ON;
 		//buzzer on 	Buzzer_Enable_Output;
     }
@@ -99,43 +97,36 @@ void Buzzer_check(Cluster_Data_t *Cluster_Data,uint32_t gem_timer)
     else if ((Cluster_Data->CAN_Data.CAN_RX_Data_Bit.SGNL.ERR_THRMLRUNWY_WARNG == 0x01) && (Cluster_Data->CAN_Data.CAN_RX_Data_Bit.SGNL.THRMLRUNWY_STS != 0x01))
     {
         Buzzer_state = Buzzer_frequency(20,ENABLE,gem_timer);
-        Cluster_Data->CAN_Tx_TT.Buzzer = 2;
     }
     else if ((Cluster_Data->CAN_Data.MCU_Temperature >= 105))
     {
         Buzzer_frequency(0,DISABLE,gem_timer);
 	    Buzzer_state = ON;
-        Cluster_Data->CAN_Tx_TT.Buzzer = 1;
     }
     else if ((Cluster_Data->CAN_Data.Motor_Temperature >= 180))
     {
         Buzzer_frequency(0,DISABLE,gem_timer);
 	    Buzzer_state = ON;
-        Cluster_Data->CAN_Tx_TT.Buzzer = 1;
     }
     else if ((Cluster_Data->CAN_Data.MCU_Temperature > 85) && (Cluster_Data->CAN_Data.MCU_Temperature < 105))
     {
 	    Buzzer_state = Buzzer_frequency(10,ENABLE,gem_timer);
-        Cluster_Data->CAN_Tx_TT.Buzzer = 2;
     }
     else if ((Cluster_Data->CAN_Data.Motor_Temperature > 160) && (Cluster_Data->CAN_Data.Motor_Temperature < 180))
     {
 	    Buzzer_state = Buzzer_frequency(10,ENABLE,gem_timer);
-        Cluster_Data->CAN_Tx_TT.Buzzer = 2;
     }
     else if(Cluster_Data->Digital_Input_Pin.bit.Right_Turn_Ind_IP == CAN_RIGHT_TURN_INDICATOR )
     {
 	  //Buzzer_state = Buzzer_frequency(5,ENABLE,gem_timer);
 	  Buzzer_state = ON; //continuous on
        	   Dutycycle = 25;
-        Cluster_Data->CAN_Tx_TT.Buzzer = 1;
     }
     else if(Cluster_Data->Digital_Input_Pin.bit.Left_Turn_Ind_IP == CAN_LEFT_TURN_INDICATOR)
     {
 	    //Buzzer_state = Buzzer_frequency(5,ENABLE,gem_timer);
 	    Buzzer_state = ON;
        	   Dutycycle = 25;
-        Cluster_Data->CAN_Tx_TT.Buzzer = 1;
     }
     /*  using xor for hazard condition 
         if ((Cluster_Data->Digital_Input_Pin.bit.Right_Turn_Ind_IP == CAN_RIGHT_TURN_INDICATOR) ^
@@ -148,7 +139,6 @@ void Buzzer_check(Cluster_Data_t *Cluster_Data,uint32_t gem_timer)
     else if (Cluster_Data -> CAN_Data.CAN_RX_Data_Bit.SGNL.Direction == CAN_REVERSE_MODE )
     {
 	    Buzzer_state = Buzzer_frequency(5,ENABLE,gem_timer);
-        Cluster_Data->CAN_Tx_TT.Buzzer = 2;
 	   //Buzzer_state = ON;
        	   Dutycycle = 25;
     }
@@ -157,10 +147,8 @@ void Buzzer_check(Cluster_Data_t *Cluster_Data,uint32_t gem_timer)
     {
         Buzzer_state = OFF;
         Buzzer_frequency(20,DISABLE,gem_timer);
-        Cluster_Data->CAN_Tx_TT.Buzzer = 2;
     }
     Buzzer_ON_OFF(Buzzer_state,Dutycycle);
-        Cluster_Data->CAN_Tx_TT.Buzzer = 0;
 }
 
 

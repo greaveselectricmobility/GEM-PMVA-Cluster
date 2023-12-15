@@ -23,7 +23,7 @@
 * Device(s)    : R5F10DMF
 * Tool-Chain   : CCRL
 * Description  : This file implements device driver for Serial module.
-* Creation Date: 07-10-2023
+* Creation Date: 19-07-2023
 ***********************************************************************************************************************/
 
 /***********************************************************************************************************************
@@ -39,7 +39,6 @@ Includes
 Pragma directive
 ***********************************************************************************************************************/
 #pragma interrupt r_csi00_interrupt(vect=INTCSI00)
-#pragma interrupt r_iic11_interrupt(vect=INTIIC11)
 /* Start user code for pragma. Do not edit comment generated here */
 /* End user code. Do not edit comment generated here */
 
@@ -52,12 +51,6 @@ extern volatile uint16_t   g_csi00_rx_count;           /* csi00 receive data cou
 extern volatile uint8_t  * gp_csi00_tx_address;        /* csi00 send buffer address */
 extern volatile uint16_t   g_csi00_tx_length;          /* csi00 send data length */
 extern volatile uint16_t   g_csi00_tx_count;           /* csi00 send data count */
-extern volatile uint8_t    g_iic11_master_status_flag; /* iic11 start flag for send address check by master mode */
-extern volatile uint8_t  * gp_iic11_tx_address;        /* iic11 send data pointer by master mode */
-extern volatile uint16_t   g_iic11_tx_count;           /* iic11 send data size by master mode */
-extern volatile uint8_t  * gp_iic11_rx_address;        /* iic11 receive data pointer by master mode */
-extern volatile uint16_t   g_iic11_rx_count;           /* iic11 receive data size by master mode */
-extern volatile uint16_t   g_iic11_rx_length;          /* iic11 receive data length by master mode */
 /* Start user code for global. Do not edit comment generated here */
 /* End user code. Do not edit comment generated here */
 
@@ -93,135 +86,6 @@ static void __near r_csi00_interrupt(void)
 * Return Value : None
 ***********************************************************************************************************************/
 static void r_csi00_callback_sendend(void)
-{
-    /* Start user code. Do not edit comment generated here */
-    /* End user code. Do not edit comment generated here */
-}
-
-/***********************************************************************************************************************
-* Function Name: r_iic11_interrupt
-* Description  : This function is INTIIC11 interrupt service routine.
-* Arguments    : None
-* Return Value : None
-***********************************************************************************************************************/
-static void __near r_iic11_interrupt(void)
-{
-    volatile uint16_t w_count;
-
-    /* Set delay to start next transmission. The delay time depend on slave device.
-       Here set 20us as default base on current clock */
-    for (w_count = 0U; w_count <= IIC11_WAITTIME_2; w_count++)
-    {
-        NOP();
-    }
-
-    if (((SSR11 & _0002_SAU_PARITY_ERROR) == 0x0002U) && (g_iic11_tx_count != 0U))
-    {
-        SIR11 |= _0002_SAU_SIRMN_PECTMN; //clear ACK error detection flag
-        R_IIC11_StopCondition();
-        r_iic11_callback_master_error(MD_NACK);
-    }
-    else if(((SSR11 & _0001_SAU_OVERRUN_ERROR) == 0x0001U) && (g_iic11_tx_count != 0U))
-    {
-        SIR11 |= _0001_SAU_SIRMN_OVCTMN; //clear overrun error detection flag
-        R_IIC11_StopCondition();
-        r_iic11_callback_master_error(MD_OVERRUN);
-    }
-    else
-    {
-        /* Control for master send */
-        if ((g_iic11_master_status_flag & _01_SAU_IIC_SEND_FLAG) == 1U)
-        {
-            if (g_iic11_tx_count > 0U)
-            {
-                SDR11L = *gp_iic11_tx_address;
-                gp_iic11_tx_address++;
-                g_iic11_tx_count--;
-            }
-            else
-            {
-                /* IIC master transmission finishes and a callback function can be called here. */
-                r_iic11_callback_master_sendend();
-            }
-        }
-        /* Control for master receive */
-        else 
-        {
-            if ((g_iic11_master_status_flag & _04_SAU_IIC_SENDED_ADDRESS_FLAG) == 0U)
-            {
-                ST1 |= _0002_SAU_CH1_STOP_TRG_ON;
-                SCR11 &= ~_C000_SAU_RECEPTION_TRANSMISSION;
-                SCR11 |= _4000_SAU_RECEPTION;                
-                SS1 |= _0002_SAU_CH1_START_TRG_ON;
-                g_iic11_master_status_flag |= _04_SAU_IIC_SENDED_ADDRESS_FLAG;
-                
-                if(g_iic11_rx_length == 1U)
-                {
-                    SOE1 &= ~_0002_SAU_CH1_OUTPUT_ENABLE;    /* disable IIC11 out */
-                }
-                
-                SDR11L = 0xFFU;
-            }
-            else
-            {
-                if (g_iic11_rx_count < g_iic11_rx_length)
-                {
-                    *gp_iic11_rx_address = SDR11L;
-                    gp_iic11_rx_address++;
-                    g_iic11_rx_count++;
-                    
-                    if (g_iic11_rx_count == (g_iic11_rx_length - 1U))
-                    {
-                        SOE1 &= ~_0002_SAU_CH1_OUTPUT_ENABLE;    /* disable IIC11 out */
-                        SDR11L = 0xFFU;
-                    }
-                    
-                    if (g_iic11_rx_count == g_iic11_rx_length)
-                    {
-                        /* IIC master reception finishes and a callback function can be called here. */
-                        r_iic11_callback_master_receiveend();
-                    }
-                    else
-                    {
-                        SDR11L = 0xFFU;
-                    }
-                }
-            }
-        }
-    }
-}
-
-/***********************************************************************************************************************
-* Function Name: r_iic11_callback_master_error
-* Description  : This function callback function open for users operation when IIC11 master error.
-* Arguments    : None
-* Return Value : None
-***********************************************************************************************************************/
-static void r_iic11_callback_master_error(MD_STATUS flag)
-{
-    /* Start user code. Do not edit comment generated here */
-    /* End user code. Do not edit comment generated here */
-}
-
-/***********************************************************************************************************************
-* Function Name: r_iic11_callback_master_receiveend
-* Description  : This function callback function open for users operation when IIC11 master receive finish.
-* Arguments    : None
-* Return Value : None
-***********************************************************************************************************************/
-static void r_iic11_callback_master_receiveend(void)
-{
-    /* Start user code. Do not edit comment generated here */
-    /* End user code. Do not edit comment generated here */
-}
-
-/***********************************************************************************************************************
-* Function Name: r_iic11_callback_master_sendend
-* Description  : This function callback function open for users operation when IIC11 master transmit finish.
-* Arguments    : None
-* Return Value : None
-***********************************************************************************************************************/
-static void r_iic11_callback_master_sendend(void)
 {
     /* Start user code. Do not edit comment generated here */
     /* End user code. Do not edit comment generated here */

@@ -48,7 +48,6 @@ Includes
 #include "DisChargingScreenLogic.h"
 #include "r_cg_userdefine.h"
 #include "Timer.h"
-#include "Delay.h"
 
 /***********************************************************************************************************************
 Pragma directive
@@ -62,7 +61,7 @@ Global variables and functions
 /* Start user code for global. Do not edit comment generated here */
 /* End user code. Do not edit comment generated here */
 void R_MAIN_UserInit(void);
-void BMS_State_Check(void);
+
 
 /***********************************************************************************************************************
 * Function Name: main
@@ -72,6 +71,10 @@ void BMS_State_Check(void);
 ***********************************************************************************************************************/
 void main(void)
 {
+	uint32_t gem_timer=0;
+	static uint32_t gem_timer_100ms_prev =0;
+	static uint8_t Charging_state_ft = 0;
+	static uint8_t DisCharging_state_ft = 0;
 	
 
 	//BYTE_t LCD_Data[LCD_DATA_ARRAY_Size]={0};
@@ -84,35 +87,51 @@ void main(void)
     /* Start user code. Do not edit comment generated here */
     // Initailization
 	//Set_Cluster_Data(&Cluster_Data,0,sizeof(Cluster_Data));
-	
 	Init();
-	static uint8_t animation_executed = 0;
-	
-
-	//if(Ignition_Input)
-	
-//	GEM_Animation(&Cluster_Data);
+	//*((unsigned char *)(0x00C0)) = 0x00;
+	// animation
+	//GEM_Animation(LCD_Data,&Cluster_Data);
+	GEM_Animation(&Cluster_Data);
 	//Set_LCD_Data(0xFF);
-	while (1U)
-	{
-    	if (Ignition_Input == 1)
-      	{
-            if (animation_executed == 0)
-            {
-		LED_OUTPUT_4(OUTPUT_HIGH);
-                GEM_Animation(&Cluster_Data);
-		LED_OUTPUT_4(OUTPUT_LOW);
-                animation_executed = 1; // Set the flag to indicate animation executed
-            }
-	   // while(animation_executed)
-	    BMS_State_Check();
-        }
-	else
-	{
-		animation_executed = 0;
-	}
-	}
-    
+    while (1U)
+    {		gem_timer = get_GEM_Timer_Value();
+		if((gem_timer - gem_timer_100ms_prev) >= 1)
+		{
+			gem_timer_100ms_prev = gem_timer;
+			Update_Message_Buffer(&Cluster_Data,gem_timer);
+			if(Cluster_Data.CAN_Data.BMS_STATE == CHARGING_STATE)
+			{
+				if(Charging_state_ft==0)
+				{
+					//Set_LCD_Data(LCD_Data,0,sizeof(LCD_Data));
+					Set_LCD_Data(0x00);
+					clear_error_bits();
+					//GEM_clear_CAN_error_bits(&Cluster_Data);
+					Charging_state_ft=1;
+					DisCharging_state_ft = 0;
+				}
+				//Charging_Screen(LCD_Data,&Cluster_Data,gem_timer);
+				Charging_Screen(&Cluster_Data,gem_timer);
+			}
+
+			else 
+			{
+				if(DisCharging_state_ft==0)
+				{
+					//Set_LCD_Data(LCD_Data,0,sizeof(LCD_Data));
+					Set_LCD_Data(0x00);
+					clear_error_bits();
+					DisCharging_state_ft=1;
+					Charging_state_ft = 0;
+				}
+				//DisCharging_Screen(LCD_Data,&Cluster_Data,gem_timer);
+				DisCharging_Screen(&Cluster_Data,gem_timer);
+			}
+			
+			gem_text_display_update();
+			disp_lattice();
+		}
+    }
     /* End user code. Do not edit comment generated here */
 }
 
@@ -140,56 +159,3 @@ void Set_Cluster_Data(Cluster_Data_t *Cluster_Data,uint8_t Value,uint8_t length)
 	memset(&Cluster_Data,Value,length);
 }
 /* End user code. Do not edit comment generated here */
-
-void BMS_State_Check(void)
-{
-	uint32_t gem_timer=0;
-	static uint32_t gem_timer_100ms_prev =0;
-	static uint8_t Charging_state_ft = 0;
-	static uint8_t DisCharging_state_ft = 0;
-	
-
-	Cluster_Data_t Cluster_Data ={0};
-
-
-	gem_timer = get_GEM_Timer_Value();
-
-		if((gem_timer - gem_timer_100ms_prev) >= 1)
-		{
-			gem_timer_100ms_prev = gem_timer;
-			Update_Message_Buffer(&Cluster_Data,gem_timer);
-			if(Cluster_Data.CAN_Data.BMS_STATE == CHARGING_STATE)
-			{
-				if(Charging_state_ft==0)
-				{
-					//Set_LCD_Data(LCD_Data,0,sizeof(LCD_Data));
-					Set_LCD_Data(0x00);
-					Charging_state_ft=1;
-					DisCharging_state_ft = 0;
-				}
-				//Charging_Screen(LCD_Data,&Cluster_Data,gem_timer);
-				Charging_Screen(&Cluster_Data,gem_timer);
-			}
-
-		else if(Cluster_Data.CAN_Data.BMS_STATE != CHARGING_STATE)
-			{
-				if(DisCharging_state_ft==0)
-				{
-					//Set_LCD_Data(LCD_Data,0,sizeof(LCD_Data));
-					Set_LCD_Data(0x00);
-					DisCharging_state_ft=1;
-					Charging_state_ft = 0;
-				}
-				//DisCharging_Screen(LCD_Data,&Cluster_Data,gem_timer);
-				DisCharging_Screen(&Cluster_Data,gem_timer);
-			}
-
-			else
-			{
-
-			}
-			gem_text_display_update();
-			disp_lattice();
-
-		}
-}

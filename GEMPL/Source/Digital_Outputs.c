@@ -34,27 +34,6 @@ void Uc_5V_Control(uint8_t State)
 }
 
 /***********************************************************************************************************************
-* Function Name: UC_3V3_Control_Output
-* Description  : 
-* Arguments    : status of the 
-* Return Value : None
-***********************************************************************************************************************/
-void UC_3V3_Control(uint8_t State)
-{
-	switch (State)
-	{
-		case OUTPUT_LOW:
-			UC_3V3_Control_Output = 0;
-			break;
-		case OUTPUT_HIGH:
-			UC_3V3_Control_Output = 1;
-			break;
-		default:
-			break;
-	}
-}
-
-/***********************************************************************************************************************
 * Function Name: CAN_STANDBY_Output_Control
 * Description  : 
 * Arguments    :

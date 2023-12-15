@@ -47,11 +47,10 @@
           <Path>GEMPL\Headers\Temperature_symbol.h</Path>
           <Path>GEMPL\Headers\Thermal_Runaway.h</Path>
           <Path>GEMPL\Headers\Buzzer.h</Path>
+          <Path>Delay.h</Path>
           <Path>RTC.h</Path>
-          <Path>GEMPL\Headers\Analog_Voltage.h</Path>
-          <Path>GEMPL\Headers\Delay.h</Path>
           <Path>GEMPL\Headers\Timer.h</Path>
-          <Path>Bluetooth.h</Path>
+          <Path>GEMPL\Headers\Read_Parameters.h</Path>
         </Category>
         <Category Name="Renesas_MCAL">
           <Path>GEMPL\Renesas_MCAL\r_cg_cgc.c</Path>
@@ -64,17 +63,14 @@
           <Path>GEMPL\Renesas_MCAL\r_cg_port.c</Path>
           <Path>GEMPL\Renesas_MCAL\r_cg_port.h</Path>
           <Path>GEMPL\Renesas_MCAL\r_cg_port_user.c</Path>
+          <Path>GEMPL\Renesas_MCAL\r_cg_serial.c</Path>
+          <Path>GEMPL\Renesas_MCAL\r_cg_serial.h</Path>
+          <Path>GEMPL\Renesas_MCAL\r_cg_serial_user.c</Path>
           <Path>GEMPL\Renesas_MCAL\r_cg_timer.c</Path>
           <Path>GEMPL\Renesas_MCAL\r_cg_timer.h</Path>
           <Path>GEMPL\Renesas_MCAL\r_cg_timer_user.c</Path>
           <Path>GEMPL\Renesas_MCAL\r_cg_userdefine.h</Path>
           <Path>GEMPL\Renesas_MCAL\r_systeminit.c</Path>
-          <Path>GEMPL\Renesas_MCAL\r_cg_adc_user.c</Path>
-          <Path>GEMPL\Renesas_MCAL\r_cg_adc.c</Path>
-          <Path>GEMPL\Renesas_MCAL\r_cg_adc.h</Path>
-          <Path>GEMPL\Renesas_MCAL\r_cg_serial.c</Path>
-          <Path>GEMPL\Renesas_MCAL\r_cg_serial.h</Path>
-          <Path>..\..\..\Renesas_Drivers\PMVA_Cluster\applilet3_src\r_cg_serial_user.c</Path>
         </Category>
         <Path>GEMPL\r_main.c</Path>
         <Category Name="CAN">
@@ -105,13 +101,10 @@
           <Path>GEMPL\Source\Thermal_Runaway.c</Path>
           <Path>GEMPL\Source\Memory_Access.c</Path>
           <Path>GEMPL\Source\Buzzer.c</Path>
+          <Path>Delay.c</Path>
           <Path>GEMPL\Source\RTC.c</Path>
-          <Path>GEMPL\Source\CAN_TX.c</Path>
-          <Path>GEMPL\Source\Gokul_CAN.c</Path>
-          <Path>GEMPL\Source\Analog_Voltage.c</Path>
-          <Path>GEMPL\Source\Delay.c</Path>
           <Path>GEMPL\Source\Timer.c</Path>
-          <Path>Bluetooth.c</Path>
+          <Path>GEMPL\Source\Read_Parameters.c</Path>
         </Category>
       </Category>
     </Files>
@@ -132,6 +125,8 @@
           <Path>DefaultBuild\r_cg_cgc_user.obj</Path>
           <Path>DefaultBuild\r_cg_port.obj</Path>
           <Path>DefaultBuild\r_cg_port_user.obj</Path>
+          <Path>DefaultBuild\r_cg_serial.obj</Path>
+          <Path>DefaultBuild\r_cg_serial_user.obj</Path>
           <Path>DefaultBuild\r_cg_timer.obj</Path>
           <Path>DefaultBuild\r_cg_timer_user.obj</Path>
           <Path>DefaultBuild\r_systeminit.obj</Path>
@@ -159,22 +154,14 @@
           <Path>DefaultBuild\Buzzer.obj</Path>
           <Path>DefaultBuild\r_cg_it_user.obj</Path>
           <Path>DefaultBuild\r_cg_it.obj</Path>
-          <Path>DefaultBuild\RTC.obj</Path>
-          <Path>DefaultBuild\CAN_TX.obj</Path>
-          <Path>DefaultBuild\Gokul_CAN.obj</Path>
-          <Path>DefaultBuild\r_cg_adc_user.obj</Path>
-          <Path>DefaultBuild\r_cg_adc.obj</Path>
-          <Path>DefaultBuild\Analog_Voltage.obj</Path>
           <Path>DefaultBuild\Delay.obj</Path>
+          <Path>DefaultBuild\RTC.obj</Path>
           <Path>DefaultBuild\Timer.obj</Path>
-          <Path>DefaultBuild\r_cg_serial.obj</Path>
-          <Path>DefaultBuild\r_cg_serial_user.obj</Path>
-          <Path>DefaultBuild\Bluetooth.obj</Path>
+          <Path>DefaultBuild\Read_Parameters.obj</Path>
           <Path>GEMPL\INT_EEPROM\eel.lib</Path>
           <Path>GEMPL\INT_EEPROM\fdl.lib</Path>
         </LinkOrder>
         <CommonOptions>
-          <IncludePathForC>..\..\..\Renesas_Drivers\PMVA_Cluster\applilet3_src</IncludePathForC>
           <IncludePathForC>GEMPL\INT_EEPROM</IncludePathForC>
           <IncludePathForC>GEMPL\CAN</IncludePathForC>
           <IncludePathForC>..\..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\CAN</IncludePathForC>
@@ -207,7 +194,6 @@
           <Option>-dev=%MicomToolPath%\Device\RL78\Devicefile\DR5F10DMF.DVF</Option>
           <Option>-g</Option>
           <Option>-g_line</Option>
-          <Option>-I ..\..\..\Renesas_Drivers\PMVA_Cluster\applilet3_src</Option>
           <Option>-I GEMPL\INT_EEPROM</Option>
           <Option>-I GEMPL\CAN</Option>
           <Option>-I ..\..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\CAN</Option>

@@ -379,6 +379,7 @@ void top_bottom_alert(uint8_t status)
 {
 	top_bottom_line( LCD_BUFF ,status);
 }
+
 void gem_alertname(uint8_t status)
 {
     alert_name_tag_warning( LCD_BUFF, status);

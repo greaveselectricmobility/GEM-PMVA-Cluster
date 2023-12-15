@@ -37,6 +37,5 @@ User definitions
 uint32_t get_GEM_Timer_Value(void);
 uint16_t get_GEM_delay_int(void);
 void Reset_GEM_delay_int(void);
-uint8_t get_GEM_ADC_read_complete(void);
 /* End user code. Do not edit comment generated here */
 #endif

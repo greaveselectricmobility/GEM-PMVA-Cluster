@@ -33,7 +33,6 @@ Includes
 #include "r_cg_cgc.h"
 #include "r_cg_port.h"
 #include "r_cg_serial.h"
-#include "r_cg_adc.h"
 #include "r_cg_timer.h"
 #include "r_cg_it.h"
 /* Start user code for include. Do not edit comment generated here */
@@ -64,9 +63,6 @@ void R_Systeminit(void)
     R_CGC_Create();
     R_PORT_Create();
     R_SAU0_Create();
-    R_SAU1_Create();
-    R_UARTF0_Create();
-    R_ADC_Create();
     R_TAU0_Create();
     //R_TAU2_Create();
     R_IT_Create();

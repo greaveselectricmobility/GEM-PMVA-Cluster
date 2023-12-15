@@ -1,112 +1,13 @@
 QualityReport
-02 November 2023 12:42:49
+12 December 2023 15:10:26
 
 ------ Start build(PMVA_Cluster_Software, DefaultBuild) ------
-C:\Program Files (x86)\Renesas Electronics\CS+\CC\CC-RL\V1.12.00\Bin\ccrl.exe Bluetooth.c -cpu=S2 -o DefaultBuild\Bluetooth.obj "-dev=C:\Program Files (x86)\Renesas Electronics\CS+\CC\Device\RL78\Devicefile\DR5F10DMF.DVF" -g -g_line -I ..\..\..\Renesas_Drivers\PMVA_Cluster\applilet3_src -I GEMPL\INT_EEPROM -I GEMPL\CAN -I ..\..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\CAN -I ..\..\Thanushree\PMVA_Cluster_Software\GEMPL\LCD -I ..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\Timer -I ..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\Sys -I ..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\SPI -I ..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\Port -I ..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\Macro -I ..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\INT_EEPROM -I ..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\GPIO -I ..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\EEPROM -I ..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\delay -I ..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\CAN -I ..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\Calc -I GEMPL\LCD -I ..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\LCD -I GEMPL\Renesas_MCAL -I GEMPL\Headers -I Renesas_MCAL -I . -lang=c99 -c -msg_lang=english
-W0511106:The folder "..\..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\CAN" specified by the "-I" option is not found.
-W0511106:The folder "..\..\Thanushree\PMVA_Cluster_Software\GEMPL\LCD" specified by the "-I" option is not found.
-W0511106:The folder "..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\Timer" specified by the "-I" option is not found.
-W0511106:The folder "..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\Sys" specified by the "-I" option is not found.
-W0511106:The folder "..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\SPI" specified by the "-I" option is not found.
-W0511106:The folder "..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\Port" specified by the "-I" option is not found.
-W0511106:The folder "..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\Macro" specified by the "-I" option is not found.
-W0511106:The folder "..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\INT_EEPROM" specified by the "-I" option is not found.
-W0511106:The folder "..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\GPIO" specified by the "-I" option is not found.
-W0511106:The folder "..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\EEPROM" specified by the "-I" option is not found.
-W0511106:The folder "..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\delay" specified by the "-I" option is not found.
-W0511106:The folder "..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\CAN" specified by the "-I" option is not found.
-W0511106:The folder "..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\Calc" specified by the "-I" option is not found.
-W0511106:The folder "..\..\..\Greenerg_files\17-May-2023\Unicorn_PMVA_SW_V.0.0\PMVA_Src\applilet3_src\RL78_PMVA_Driver\LCD" specified by the "-I" option is not found.
-W0511106:The folder "Renesas_MCAL" specified by the "-I" option is not found.
-W0511187:The evaluation period for the option "-Odefault" of CC-RL V1 has expired. It is implicitly changed to "-Olite". Please consider purchasing the product to continue using "-Odefault". By explicitly specifying "-Olite" or "-Onothing", this warning message disappears. 
-Bluetooth.c(8):W0523076:Function declarations should have prototype
-Bluetooth.c(10):W0520177:Variable "temporary_array" was declared but never referenced
-C:\Program Files (x86)\Renesas Electronics\CS+\CC\CC-RL\V1.12.00\Bin\rlink.exe -subcommand=DefaultBuild\PMVA_Cluster_Software.clnk
-W0561017:Paid license of CC-RL V1 is not found, and the evaluation period has expired. Please consider purchasing the product.
-W0561017:Paid license of CC-RL V1 is not found, and the evaluation period has expired. Please consider purchasing the product.
-Renesas Optimizing Linker Completed
------- Build ended(Error:0, Warning:20)(PMVA_Cluster_Software, DefaultBuild) ------
-
---- CommandFile 1 ---
-DefaultBuild\PMVA_Cluster_Software.clnk :
--Input=DefaultBuild\cstart.obj
--Input=DefaultBuild\stkinit.obj
--Input=DefaultBuild\r_main.obj
--Input=DefaultBuild\r_cg_cgc.obj
--Input=DefaultBuild\r_cg_cgc_user.obj
--Input=DefaultBuild\r_cg_port.obj
--Input=DefaultBuild\r_cg_port_user.obj
--Input=DefaultBuild\r_cg_timer.obj
--Input=DefaultBuild\r_cg_timer_user.obj
--Input=DefaultBuild\r_systeminit.obj
--Input=DefaultBuild\Animation.obj
--Input=DefaultBuild\Battery_Symbol.obj
--Input=DefaultBuild\Calculations.obj
--Input=DefaultBuild\ChargingScreenLogic.obj
--Input=DefaultBuild\Cluster_Data_Update.obj
--Input=DefaultBuild\Digital_Inputs.obj
--Input=DefaultBuild\Digital_Outputs.obj
--Input=DefaultBuild\DisChargingScreenLogic.obj
--Input=DefaultBuild\GEM_can.obj
--Input=DefaultBuild\GEM_LCD_Telltales.obj
--Input=DefaultBuild\Init.obj
--Input=DefaultBuild\Temperature_symbol.obj
--Input=DefaultBuild\Thermal_Runaway.obj
--Input=DefaultBuild\lcd.obj
--Input=DefaultBuild\lcd_segments.obj
--Input=DefaultBuild\my_can.obj
--Input=DefaultBuild\Service_Alert.obj
--Input=DefaultBuild\eel_descriptor.obj
--Input=DefaultBuild\eel_fdl_main.obj
--Input=DefaultBuild\fdl_descriptor.obj
--Input=DefaultBuild\Memory_Access.obj
--Input=DefaultBuild\Buzzer.obj
--Input=DefaultBuild\r_cg_it_user.obj
--Input=DefaultBuild\r_cg_it.obj
--Input=DefaultBuild\RTC.obj
--Input=DefaultBuild\CAN_TX.obj
--Input=DefaultBuild\Gokul_CAN.obj
--Input=DefaultBuild\r_cg_adc_user.obj
--Input=DefaultBuild\r_cg_adc.obj
--Input=DefaultBuild\Analog_Voltage.obj
--Input=DefaultBuild\Delay.obj
--Input=DefaultBuild\Timer.obj
--Input=DefaultBuild\r_cg_serial.obj
--Input=DefaultBuild\r_cg_serial_user.obj
--Input=DefaultBuild\Bluetooth.obj
--LIBrary=GEMPL\INT_EEPROM\eel.lib
--LIBrary=GEMPL\INT_EEPROM\fdl.lib
--SECURITY_ID=00000000000000000000
--DEVICE=C:\Program Files (x86)\Renesas Electronics\CS+\CC\Device\RL78\Devicefile\DR5F10DMF.DVF
--DEBug
--NOCOmpress
--NOOPtimize
--OUtput=DefaultBuild\PMVA_Cluster_Software.abs
--LIBrary=C:\Program Files (x86)\Renesas Electronics\CS+\CC\CC-RL\V1.12.00\lib\rl78cm4s99.lib
--LIBrary=C:\Program Files (x86)\Renesas Electronics\CS+\CC\CC-RL\V1.12.00\lib\malloc_n.lib
--LIBrary=C:\Program Files (x86)\Renesas Electronics\CS+\CC\CC-RL\V1.12.00\lib\rl78cm4r.lib
--OCDBG=84
--DEBUG_MONITOR=17E00-17FFF
--USER_OPT_BYTE=EFFF08
--LISt=DefaultBuild\PMVA_Cluster_Software.map
--AUTO_SECTION_LAYOUT
--ROm=.data=.dataR
--ROm=.sdata=.sdataR
--NOMessage
--MEMory=High
--NOLOgo
--end
--Input=DefaultBuild\PMVA_Cluster_Software.abs
--DEVICE=C:\Program Files (x86)\Renesas Electronics\CS+\CC\Device\RL78\Devicefile\DR5F10DMF.DVF
--OUtput=DefaultBuild\PMVA_Cluster_Software.mot
--FOrm=Stype
--NOMessage
--exit
+------ Build ended(Error:0, Warning:0)(PMVA_Cluster_Software, DefaultBuild) ------
 
 
 --- SHA1 hash value of output files ---
-D:\Greaves\Gokul\LatestCode\PMVA_Cluster_Software_10_OCt_2023\PMVA_Cluster_Software\DefaultBuild\PMVA_Cluster_Software.abs: ce978d1f3ffff7a8d0d0a369ab62416880b9ac78
-D:\Greaves\Gokul\LatestCode\PMVA_Cluster_Software_10_OCt_2023\PMVA_Cluster_Software\DefaultBuild\PMVA_Cluster_Software.mot: 7911f2157476c82aa0f225deccfc7e9496e55cc9
+D:\Greaves\Gokul\PMVA_Cluster_Software_13_Sep_2023_Gokul_Updates\PMVA_Cluster_Software\DefaultBuild\PMVA_Cluster_Software.abs: dd6febc30097bbc531c4f4d1885ec34c2dfb1132
+D:\Greaves\Gokul\PMVA_Cluster_Software_13_Sep_2023_Gokul_Updates\PMVA_Cluster_Software\DefaultBuild\PMVA_Cluster_Software.mot: 063e49b137705fca7f3983e03a93ebedc253102e
 
 
 --- System Information ---
@@ -134,13 +35,13 @@ D:\Greaves\Gokul\LatestCode\PMVA_Cluster_Software_10_OCt_2023\PMVA_Cluster_Softw
  C:\Program Files (x86)\Renesas Electronics\CS+\CC
 *Memory Usage
  *Private Working Set
-  258 MB
+  291 MB
  *Number of GDI Objects
-  2104
+  2183
  *Number of USER Objects
-  1005
+  1126
  *Opened Files
-  6 editors, 6 files, 41 KB
+  9 editors, 9 files, 53 KB
 
 --- Build Tool Plug-in Information ---
 RH850 Build tool CC-RH Plug-in
@@ -276,7 +177,7 @@ Device Information Common Interface
   DeviceInformation.dll
 
 --- Main Project Information ---
-D:\Greaves\Gokul\LatestCode\PMVA_Cluster_Software_10_OCt_2023\PMVA_Cluster_Software\PMVA_Cluster_Software.mtpj
+D:\Greaves\Gokul\PMVA_Cluster_Software_13_Sep_2023_Gokul_Updates\PMVA_Cluster_Software\PMVA_Cluster_Software.mtpj
 Microcontroller Information
  *R5F10DMF
   *File Name: Version

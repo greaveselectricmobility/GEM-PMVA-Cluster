@@ -15,7 +15,6 @@ void Uc_5V_Control(uint8_t State);
 void LCD_BackLight_Control(uint8_t State);
 void CAN_STANDBY_Output_Control(uint8_t State);
 void CAN_TX(uint8_t State);
-void UC_3V3_Control(uint8_t State);
 
 
 void LED_OUTPUT_1(uint8_t State);

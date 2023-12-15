@@ -46,7 +46,6 @@ uint8_t Service_alert_blink(int blink_rate_interval, int blink_ctrl,uint32_t gem
     {
 	    temp_ser_alrt_sym_state= OFF;
 	    prev_ser_alrt_symbol_ms = gem_timer;
-    
     }
     return temp_ser_alrt_sym_state;
 }
@@ -82,8 +81,6 @@ void Service_alert(Cluster_Data_t *Cluster_Data,uint32_t gem_timer)
         {
            Service_alert_Symbol_State = Service_alert_blink(10,ENABLE,gem_timer);
             Cluster_Data->LCD_TellTale_Symbol.bit.Service_Alert_TT = 1;
-		    Cluster_Data->CAN_Tx_TT.Service_Due_Alert = 1;
-
             ser_sts_flag = 1;
 
         }
@@ -93,7 +90,6 @@ void Service_alert(Cluster_Data_t *Cluster_Data,uint32_t gem_timer)
             Service_alert_blink(0,DISABLE,gem_timer);
             Service_alert_Symbol_State = ON;
             Cluster_Data->LCD_TellTale_Symbol.bit.Service_Alert_TT = 1;
-		    Cluster_Data->CAN_Tx_TT.Service_Due_Alert = 1;
             ser_sts_flag=1;
             
         }
@@ -102,7 +98,6 @@ void Service_alert(Cluster_Data_t *Cluster_Data,uint32_t gem_timer)
             Service_alert_Symbol_State = OFF;
             Service_alert_blink(0,DISABLE,gem_timer);
             Cluster_Data->LCD_TellTale_Symbol.bit.Service_Alert_TT = 0;
-		    Cluster_Data->CAN_Tx_TT.Service_Due_Alert = 0;
             ser_sts_flag=0;
         }
     }
@@ -112,12 +107,10 @@ void Service_alert(Cluster_Data_t *Cluster_Data,uint32_t gem_timer)
         if(Cluster_Data->CAN_Data.CAN_Req[4] == 0x00)
         {
             Service_alert_Symbol_State=OFF;
-		    Cluster_Data->CAN_Tx_TT.Service_Due_Alert = 0;
         }
         else if(Cluster_Data->CAN_Data.CAN_Req[4] == 0x01)
         {
             Service_alert_Symbol_State=ON;
-		    Cluster_Data->CAN_Tx_TT.Service_Due_Alert = 1;
         }
         Cluster_Data->CAN_Data.CAN_Resp[0] = 0x03;
         Cluster_Data->CAN_Data.CAN_Resp[1] = 0x6E;

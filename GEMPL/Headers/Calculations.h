@@ -25,7 +25,6 @@ void GEM_Mem_Init(void);
 void gem_odo_update(uint32_t nvm_odo);
 void Odo_value_Mem_read(uint32_t *Odo_mem_read);
 void GEM_ODO_write_Check(uint32_t odo_disp,uint32_t nvm_odo);
-void i2c_test(void);
 
 void Calculate_Dummy_Odo_value(void);
 #endif

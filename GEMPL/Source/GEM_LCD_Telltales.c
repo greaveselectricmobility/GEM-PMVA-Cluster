@@ -31,15 +31,12 @@ void GEM_Throttle_Telltale (Cluster_Data_t *Cluster_Data)
         //Set Telltale ON in LCD_DATA_Function() 
 		gem_err_indication(THROTTLE_ON,ON);
         Cluster_Data->LCD_TellTale_Symbol.bit.Throttle_Failure_TT = ON;
-		Cluster_Data->CAN_Tx_TT.Throttle_Failure = 1;
     }
     else
     {
         //Set Telltale OFF in LCD_DATA_Function() 
 		gem_err_indication(THROTTLE_ON,OFF);
         Cluster_Data->LCD_TellTale_Symbol.bit.Throttle_Failure_TT = OFF;
-		Cluster_Data->CAN_Tx_TT.Throttle_Failure = 0;
-
     }
     
 }
@@ -59,14 +56,11 @@ void GEM_Highbeam_Telltale (Cluster_Data_t *Cluster_Data)
 		Cluster_Data ->LCD_TellTale_Symbol.bit.Headlamp_HighBeam_TT = 1;
 		//gem_err_indication()
 		gem_high(ON);
-		Cluster_Data->CAN_Tx_TT.High_Beam = 1;
-
 	}
 	else
 	{
 		//Set Telltale ON in LCD_DATA_Function()
 		Cluster_Data ->LCD_TellTale_Symbol.bit.Headlamp_HighBeam_TT = 0;
-		Cluster_Data->CAN_Tx_TT.High_Beam = 0;
 		gem_high(OFF);
 	}
 	
@@ -85,14 +79,12 @@ void GEM_LeftTurn_Indicator_Telltale (Cluster_Data_t *Cluster_Data)
 	{
 		//Set Telltale ON in LCD_DATA_Function()
 		Cluster_Data ->LCD_TellTale_Symbol.bit.Left_Turn_Indicator_TT = 1;
-		Cluster_Data->CAN_Tx_TT.Left_Turn_Indicator = 1;
 		left_indicator_telltile_control(ON);
 	}
 	else
 	{
 		//Set Telltale ON in LCD_DATA_Function()
 		Cluster_Data ->LCD_TellTale_Symbol.bit.Left_Turn_Indicator_TT = 0;
-		Cluster_Data->CAN_Tx_TT.Left_Turn_Indicator = 0;
 		left_indicator_telltile_control(OFF);
 	}
 }
@@ -110,14 +102,12 @@ void GEM_RightTurn_Indicator_Telltale (Cluster_Data_t *Cluster_Data)
 	{
 		//Set Telltale ON in LCD_DATA_Function()
 		Cluster_Data ->LCD_TellTale_Symbol.bit.Rightt_Turn_Indicator_TT = 1;
-		Cluster_Data->CAN_Tx_TT.Right_Turn_indicator = 1;
 		right_indicator_telltile_control(ON);
 	}
 	else
 	{
 		//Set Telltale ON in LCD_DATA_Function()
 		Cluster_Data ->LCD_TellTale_Symbol.bit.Rightt_Turn_Indicator_TT = 0;
-		Cluster_Data->CAN_Tx_TT.Right_Turn_indicator = 0;
 		right_indicator_telltile_control(OFF);
 	}
 	//right_indicator_telltile_control(1);
@@ -133,9 +123,7 @@ void GEM_Battery_Charging ( Cluster_Data_t *Cluster_Data )
 {
 	//Cluster_Data ->CAN_Data.BMS_STATE == 
 	//Cluster_Data ->LCD_TellTale_Symbol.bit.Battery_TT = 1;
-	Cluster_Data->CAN_Tx_TT.Main_Battery_charging_status = 1;
 	gem_battery_charg(ON);
-
 }
 
 /***********************************************************************************************************************
@@ -150,13 +138,11 @@ void GEM_Reverse_Mode ( Cluster_Data_t *Cluster_Data )
 	if (Cluster_Data -> CAN_Data.CAN_RX_Data_Bit.SGNL.Direction == CAN_REVERSE_MODE )
 	{
 		Cluster_Data -> LCD_TellTale_Symbol.bit.Reverse_TT = 1;
-		Cluster_Data->CAN_Tx_TT.Reverse_Status = 1;
 		gem_Reverse(ON);
 	}
 	else
 	{
 		Cluster_Data -> LCD_TellTale_Symbol.bit.Reverse_TT = 0;
-		Cluster_Data->CAN_Tx_TT.Reverse_Status = 0;
 		gem_Reverse(OFF);
 	}
 
@@ -190,8 +176,7 @@ void GEM_Battery_Full ( Cluster_Data_t *Cluster_Data )
 void GEM_Ready_Indication ( Cluster_Data_t *Cluster_Data )
 {
 	
-	gem_Ready(~ (Cluster_Data->CAN_Data.CAN_RX_Data_Bit.SGNL.Park_Indication));
-	Cluster_Data->CAN_Tx_TT.Ready_status = 1;
+		gem_Ready(~ (Cluster_Data->CAN_Data.CAN_RX_Data_Bit.SGNL.Park_Indication));
 	
 	//gem_set_clear_text_display(BATTERY_FULL_TXT, ENABLE);
 	//gem_text_display_update();
@@ -228,14 +213,9 @@ void GEM_MCU_Error(Cluster_Data_t *Cluster_Data)
 	//Cluster_Data-> CAN_Data.CAN_RX_Data_Bit.SGNL.Controller_Error = CAN_MCU_ERROR;
 	if( Cluster_Data-> CAN_Data.CAN_RX_Data_Bit.SGNL.Controller_Error == CAN_MCU_ERROR){
 		gem_set_clear_text_display(MCU_ERROR_TXT, ENABLE);
-		Cluster_Data->CAN_Tx_TT.MCU_Failure = 1;
-		Cluster_Data->CAN_Tx_TT.Motor_Failure = 0;
-
 	}
 	else{
 		gem_set_clear_text_display(MCU_ERROR_TXT, DISABLE);
-		Cluster_Data->CAN_Tx_TT.MCU_Failure = 0;
-		Cluster_Data->CAN_Tx_TT.Motor_Failure = 0;
 	}
 	//if(Cluster_Data->CAN_Value_error.bit.MCU_Value_Error == CAN_MCU_ERROR){
 	//	gem_set_clear_text_display(MCU_VALUE_ERROR_TXT, ENABLE);
@@ -256,14 +236,9 @@ void GEM_Motor_Error(Cluster_Data_t *Cluster_Data)
 	//Cluster_Data-> CAN_Data.CAN_RX_Data_Bit.SGNL.Motor_Error = CAN_MOTOR_ERROR;
 	if( Cluster_Data-> CAN_Data.CAN_RX_Data_Bit.SGNL.Motor_Error == CAN_MOTOR_ERROR){
 		gem_set_clear_text_display(MOTOR_ERROR_TXT, ENABLE);
-		Cluster_Data->CAN_Tx_TT.Motor_Failure = 1;
-		Cluster_Data->CAN_Tx_TT.MCU_Failure = 0;
 	}
 	else{
 		gem_set_clear_text_display(MOTOR_ERROR_TXT, DISABLE);
-		Cluster_Data->CAN_Tx_TT.Motor_Failure = 0;
-		Cluster_Data->CAN_Tx_TT.MCU_Failure = 0;
-
 	}
 }
 
@@ -278,7 +253,6 @@ void GEM_MCU_Locked_Error(Cluster_Data_t *Cluster_Data)
 	//Cluster_Data-> CAN_Data.CAN_RX_Data_Bit.SGNL.Immobilize_Sts = CAN_MCU_LOCKED_ERROR;
 	if( Cluster_Data-> CAN_Data.CAN_RX_Data_Bit.SGNL.Immobilize_Sts == CAN_MCU_LOCKED_ERROR){
 		gem_set_clear_text_display(MCU_LOCKED_TXT, ENABLE);
-		
 	}
 	else{
 		gem_set_clear_text_display(MCU_LOCKED_TXT, DISABLE);
@@ -296,13 +270,9 @@ void GEM_Limp_Home_Mode_Error(Cluster_Data_t *Cluster_Data)
 	//Cluster_Data-> CAN_Data.CAN_RX_Data_Bit.SGNL.Limp_Home_Mode = CAN_LIMP_HOME_MODE_ERROR;
 	if( Cluster_Data-> CAN_Data.CAN_RX_Data_Bit.SGNL.Limp_Home_Mode == CAN_LIMP_HOME_MODE_ERROR){
 		gem_set_clear_text_display(LIMP_MODE_HOME_TXT, ENABLE);
-		Cluster_Data->CAN_Tx_TT.Limp_home_Mode = 2;
-
 	}
 	else{
 		gem_set_clear_text_display(LIMP_MODE_HOME_TXT, DISABLE);
-		Cluster_Data->CAN_Tx_TT.Limp_home_Mode = 0;
-
 	}
 }
 
@@ -322,17 +292,13 @@ void GEM_Vehicle_Modes(Cluster_Data_t *Cluster_Data)
 	if (Cluster_Data -> CAN_Data.CAN_RX_Data_Bit.SGNL.Mode_Status_Flag == CAN_VEHICLE_MODE_ECO )
 	{
 		gem_vehice_modes(ECO);
-	    Cluster_Data->CAN_Tx_TT.Speed_Mode = 0;
 	}
 	else if(Cluster_Data -> CAN_Data.CAN_RX_Data_Bit.SGNL.Mode_Status_Flag == CAN_VEHICLE_MODE_PWR )
 	{
 		gem_vehice_modes(PWR);
-	    Cluster_Data->CAN_Tx_TT.Speed_Mode = 1;
-
 	}
 	else{
 		gem_vehice_modes(0);
-	    Cluster_Data->CAN_Tx_TT.Speed_Mode = 0;
 	}
 }
 
@@ -374,7 +340,7 @@ void GEM_Speed_Display(Cluster_Data_t *Cluster_Data)
 * Arguments    : Cluster_Data
 * Return Value : None
 ***********************************************************************************************************************/
-uint8_t GEM_SOC_Bar_Logic(int soc_percentage) 
+void GEM_SOC_Bar_Logic(int soc_percentage) 
 {
     int bar;
     if ((soc_percentage==100) || (soc_percentage<=5) || ((soc_percentage%10) ==0))
@@ -398,7 +364,6 @@ uint8_t GEM_SOC_Bar_Logic(int soc_percentage)
         bar+=1;
     }
     gem_SOC_bar(bar, ENABLE);
-	return bar;
 }
 
 /***********************************************************************************************************************
@@ -414,13 +379,11 @@ void GEM_SOC(Cluster_Data_t *Cluster_Data)
 	if ((Cluster_Data->CAN_Data.SOC <= 100))
 	{
 		//gem_soc(Cluster_Data-> CAN_Data.SOC);
-		Cluster_Data->SOC_Bar = GEM_SOC_Bar_Logic(Cluster_Data-> CAN_Data.SOC);
+		GEM_SOC_Bar_Logic(Cluster_Data-> CAN_Data.SOC);
 	}
 	else
-	{
-		
+	{	
 		gem_SOC_bar(0,DISABLE);
-		Cluster_Data->SOC_Bar = 0;
 	}
 
 }
@@ -431,13 +394,9 @@ void GEM_Brake_fluid(Cluster_Data_t *Cluster_Data)
 	if(Brake_Fluid_Indicator == 1)
 	{
 		LED_OUTPUT_3(ON);
-		Cluster_Data->CAN_Tx_TT.Brake_Failure_alert = 1;
-
 	}
 	else{
 		LED_OUTPUT_3(OFF);
-		Cluster_Data->CAN_Tx_TT.Brake_Failure_alert = 0;
-
 	}
 
 }
@@ -474,3 +433,23 @@ void GEM_Alert_nametag_warning( Cluster_Data_t *Cluster_Data )
 		gem_alertname(OFF);
 	 }
 }
+
+//void GEM_clear_CAN_error_bits(Cluster_Data_t *Cluster_Data)
+//{
+//	Cluster_Data->CAN_Value_error.Error = 0;
+//}
+
+//void GEM_Charging_Screen_Alert_nametag_warning( Cluster_Data_t *Cluster_Data )
+//	if(		Cluster_Data -> CAN_Data.CAN_RX_Data_Bit.SGNL.BATT_FULL == 1 
+//	 	|| 	Cluster_Data -> CAN_Data.CAN_RX_Data_Bit.SGNL.BATT_LOW == 1
+//	 	||  Cluster_Data-> CAN_Data.CAN_RX_Data_Bit.SGNL.Motor_Error == 1
+//	 	||  Cluster_Data-> CAN_Data.CAN_RX_Data_Bit.SGNL.Controller_Error == 1)
+//	{
+//		gem_alertname(ON);
+//	}
+//	 else
+//	{
+//		gem_alertname(OFF);
+//	}
+//		
+//}

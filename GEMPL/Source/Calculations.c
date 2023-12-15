@@ -15,6 +15,8 @@
 #include "GEM_can.h"
 
 
+
+
 #define SPEED_TOLERANCE (1.05)  //5% higher value
 #define WHEEL_RADIUS (0.2285f)   // Unit: meter
 #define PI ((22/7))
@@ -22,7 +24,7 @@
 #define WHEEL_SPEED_CONSTANT ((((WHEEL_CIRCUMFERENCE) * (60))/(1000)) * (((100) + (SPEED_TOLERANCE)) / (100)))
 #define KMPH_to_mps ((1000)/(3600))
 #define VEHICLE_SPEED_CONSTANT ((WHEEL_RADIUS)*(2.0f)*(3.14f)*(60.0f) * (1.05f))
-uint8_t GEM_Vehicle_Speed;
+float GEM_Vehicle_Speed;
 uint32_t GEM_Odo_Value;
 //float GEM_Odo_Value = 4000000;
 uint32_t GEM_Odo_Value_mem;
@@ -41,7 +43,7 @@ uint32_t GEM_TRIP_Start_Odo_A, GEM_IGN_ON_Odo_Read_B;
 ***********************************************************************************************************************/
 uint8_t GEM_get_Vehicle_Speed(void)
 {
-	return GEM_Vehicle_Speed;
+	return (uint8_t)GEM_Vehicle_Speed;
 }
 
 
@@ -55,17 +57,21 @@ uint8_t GEM_get_Vehicle_Speed(void)
 void Calculate_Odo_value(void)
 {
 	float meter = 0;
+	static float meter_f = 0;
 	if(GEM_Vehicle_Speed > 0)
 	{
 		//meter = GEM_Vehicle_Speed * KMPH_to_mps * 10;  // 1.6m is converted to 16.... 125m as 1250..... 0.1km
-		meter = ((float)GEM_get_Vehicle_Speed()* 1000) / 3600;  // 1.6m is converted to 16.... 125m as 1250..... 0.1km
+		meter = (GEM_Vehicle_Speed* 1000) / 3600;  // 1.6m is converted to 16.... 125m as 1250..... 0.1km
+		meter_f = meter_f + meter;
 		
-		GEM_Odo_Value = (uint32_t)(GEM_Odo_Value + (uint8_t)meter);
+		GEM_Odo_Value = (uint32_t)(GEM_Odo_Value + (uint8_t)meter_f);
+		meter_f = meter_f - (uint8_t)meter_f;
+		
 		if (GEM_Odo_Value >= 1000000000)  
 		{
 			GEM_Odo_Value = 0;
 		}
-		GEM_ODO_write_Check(GEM_get_Odo_Value_Disp(),GEM_Odo_Value);
+		
 	}
 	
 }
@@ -178,6 +184,7 @@ void GEM_Vehicle_Speed_Calc(uint16_t g_Motor_RPM)
 	++t_time;
 	if(t_time % 10 == 0)
 	{
+		//Calculate_Dummy_Odo_value();
 		Calculate_Odo_value();
 		Calculate_Trip_distance_B();
 	}
@@ -214,4 +221,24 @@ void Vehicle_Speed_Calculations(void)
 void Odo_value_Mem_read(uint32_t *Odo_mem_read)
 {
 	GEM_Odo_Value = *Odo_mem_read;
+}
+
+uint32_t GEM_Odo_Value1;
+
+void Calculate_Dummy_Odo_value(void)
+{
+	float meter = 0;
+	if(GEM_Vehicle_Speed > 0)
+	{
+		//meter = GEM_Vehicle_Speed * KMPH_to_mps * 10;  // 1.6m is converted to 16.... 125m as 1250..... 0.1km
+		meter = ((float)GEM_get_Vehicle_Speed()* 1000) / 3600;  // 1.6m is converted to 16.... 125m as 1250..... 0.1km
+		
+		GEM_Odo_Value = (uint32_t)(GEM_Odo_Value + ((uint8_t)meter));
+		if (GEM_Odo_Value >= 1000000000)  
+		{
+			GEM_Odo_Value = 0;
+		}
+					
+	}				
+	
 }

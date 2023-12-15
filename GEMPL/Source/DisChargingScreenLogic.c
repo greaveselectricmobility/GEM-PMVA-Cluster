@@ -18,8 +18,6 @@
 #include "GEM_LCD_Telltales.h"
 #include "Buzzer.h"
 #include "RTC.h"
-#include "GEM_can.h"
-#include "Analog_Voltage.h"
 #include "Calculations.h"
 
 //void LCD_Telltales(BYTE_t *LCD_Data,Cluster_Data_t *Cluster_Data,uint32_t gem_timer)
@@ -101,9 +99,5 @@ void DisCharging_Screen(Cluster_Data_t *Cluster_Data,uint32_t gem_timer)
 	//LCD_Telltales(Cluster_Data,gem_timer);
         //LED_Telltales()
         //Error_Logic(Cluster_Data,gem_timer);
-
-    GEM_CAN_TX(Cluster_Data);
-    i2c_test();
-    GEM_Analog();
     }
 }

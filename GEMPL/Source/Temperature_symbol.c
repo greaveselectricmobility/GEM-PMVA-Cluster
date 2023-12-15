@@ -60,47 +60,30 @@ void Temperature_symbol_check(Cluster_Data_t *Cluster_Data,uint32_t gem_timer)
     {
         Temp_Symbol_State = Temperature_Symbol_blink(20,ENABLE,gem_timer);
         Cluster_Data->LCD_TellTale_Symbol.bit.Temperature_TT = 1;
-        Cluster_Data->CAN_Tx_TT.Thermal_Run_Away = 1;
-        Cluster_Data->CAN_Tx_TT.MCU_Temp_High = 0;
-        Cluster_Data->CAN_Tx_TT.Motor_Temp_High = 0;
-		
         //gem_err_indication(TOP_BOTTOM_LINE,ON);
     }
     else if ((Cluster_Data->CAN_Data.MCU_Temperature >= 105))
     {
         Temperature_Symbol_blink(0,DISABLE,gem_timer);
         Cluster_Data->LCD_TellTale_Symbol.bit.Temperature_TT = 1;
-        Cluster_Data->CAN_Tx_TT.MCU_Temp_High = 2;
-        Cluster_Data->CAN_Tx_TT.Motor_Temp_High = 0;
-        Cluster_Data->CAN_Tx_TT.Thermal_Run_Away = 0;
-
 	    Temp_Symbol_State = ON;
     }
     else if ((Cluster_Data->CAN_Data.Motor_Temperature >= 180))
     {
         Temperature_Symbol_blink(0,DISABLE,gem_timer);
         Cluster_Data->LCD_TellTale_Symbol.bit.Temperature_TT = 1;
-        Cluster_Data->CAN_Tx_TT.Motor_Temp_High = 2;
-        Cluster_Data->CAN_Tx_TT.MCU_Temp_High = 0;
-        Cluster_Data->CAN_Tx_TT.Thermal_Run_Away = 0;
 	    Temp_Symbol_State = ON;
     }
     else if ((Cluster_Data->CAN_Data.MCU_Temperature > 85) && (Cluster_Data->CAN_Data.MCU_Temperature < 105))
     {
 	    Temp_Symbol_State = Temperature_Symbol_blink(10,ENABLE,gem_timer);
         Cluster_Data->LCD_TellTale_Symbol.bit.Temperature_TT = 1;
-        Cluster_Data->CAN_Tx_TT.MCU_Temp_High = 1;
-        Cluster_Data->CAN_Tx_TT.Motor_Temp_High = 0;
-        Cluster_Data->CAN_Tx_TT.Thermal_Run_Away = 0;
         //gem_err_indication(TOP_BOTTOM_LINE,ON);
     }
     else if ((Cluster_Data->CAN_Data.Motor_Temperature > 160) && (Cluster_Data->CAN_Data.Motor_Temperature < 180))
     {
 	    Temp_Symbol_State = Temperature_Symbol_blink(10,ENABLE,gem_timer);
         Cluster_Data->LCD_TellTale_Symbol.bit.Temperature_TT = 1;
-        Cluster_Data->CAN_Tx_TT.Motor_Temp_High = 1;
-        Cluster_Data->CAN_Tx_TT.Thermal_Run_Away = 0;
-        Cluster_Data->CAN_Tx_TT.MCU_Temp_High = 0;
         //gem_err_indication(TOP_BOTTOM_LINE,ON);
     }
     else
@@ -109,9 +92,6 @@ void Temperature_symbol_check(Cluster_Data_t *Cluster_Data,uint32_t gem_timer)
         Temperature_Symbol_blink(0,DISABLE,gem_timer);
         Cluster_Data->LCD_TellTale_Symbol.bit.Temperature_TT = 0;
         //gem_err_indication(TOP_BOTTOM_LINE,OFF);
-        Cluster_Data->CAN_Tx_TT.MCU_Temp_High = 0;
-        Cluster_Data->CAN_Tx_TT.Motor_Temp_High = 0;
-        Cluster_Data->CAN_Tx_TT.Thermal_Run_Away = 0;
     }
     gem_err_indication(TEMP_ON,Temp_Symbol_State);
     //Temperature_Symbol_LCD(Temp_Symbol_State);

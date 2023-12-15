@@ -23,7 +23,7 @@
 * Device(s)    : R5F10DMF
 * Tool-Chain   : CCRL
 * Description  : This file implements device driver for PORT module.
-* Creation Date: 07-10-2023
+* Creation Date: 02-08-2023
 ***********************************************************************************************************************/
 
 #ifndef PORT_H

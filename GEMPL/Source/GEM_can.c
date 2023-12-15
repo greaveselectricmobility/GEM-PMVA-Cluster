@@ -19,9 +19,9 @@
 
 //----------------------------------------------------------------------------------------------------------------
 #pragma	interrupt GEM_Rx_MsgBuf_Processing(vect=INTC0REC)
-#pragma	interrupt GEM_ISR_CAN_Error(vect=INTC0ERR)
-#pragma interrupt GEM_ISR_CAN_Wakeup(vect=INTC0WUP)
-#pragma	interrupt GEM_INT_Tx(vect=INTC0TRX)
+//#pragma	interrupt GEM_ISR_CAN_Error(vect=INTC0ERR)
+//#pragma interrupt GEM_ISR_CAN_Wakeup(vect=INTC0WUP)
+//#pragma	interrupt GEM_INT_Tx(vect=INTC0TRX)
 
 //----------------------------------------------------------------------------------------------------------------
 //uint8_t GEM_Tx_Databuf[8];
@@ -215,8 +215,8 @@ void GEM_CAN_Init(uint8_t Baud_Rate)
 	// C0RECMK = 0;			// Enable Receive interrupt
 
 	CAN_0_Receive_Interrupt(CLEAR_IF_FLAG,ENABLE_INTERRUPT,INT_Priority_High);
-	CAN_0_Transmit_Interrupt(CLEAR_IF_FLAG,ENABLE_INTERRUPT,INT_Priority_Level_1);
-	CAN_0_Error_Interrupt(CLEAR_IF_FLAG,ENABLE_INTERRUPT,INT_Priority_Low);
+	CAN_0_Transmit_Interrupt(CLEAR_IF_FLAG,DISABLE_INTERRUPT,INT_Priority_Level_1);
+	CAN_0_Error_Interrupt(CLEAR_IF_FLAG,DISABLE_INTERRUPT,INT_Priority_Low);
 	CAN_0_Wakeup_Interrupt(CLEAR_IF_FLAG,DISABLE_INTERRUPT);
 	// C0WUPIF = 0;			// clear wakeup interrupt flag
 	// C0WUPMK = 1;			// Disable wakeup interrupt
@@ -270,22 +270,22 @@ void GEM_CAN_Init_new(uint8_t Baud_Rate)
    
 
     //MY_Rx_MsgBuf_Init(8,0x1AA);      //BAT_ERR,BAT_FUL CHRG
-	GEM_Rx_MsgBuf_Init(9,0x18FF035A,NO_MASK,IDE_EXT);
+	GEM_Rx_MsgBuf_Init(0,0x18FF035A,NO_MASK,IDE_EXT);
 	
 	
 	GEM_RX_Mask_MsgBuf_Init(0x00000F3A,MASK_BUFFER_1,  IDE_EXT);
-	GEM_Rx_MsgBuf_Init(10,0x18FF0F7A,MASK_BUFFER_1,IDE_EXT); //Mask_Value 0x00002f00
+	GEM_Rx_MsgBuf_Init(1,0x18FF0F7A,MASK_BUFFER_1,IDE_EXT); //Mask_Value 0x00002f00
 	
-	GEM_Rx_MsgBuf_Init(11,0x14520902,NO_MASK,IDE_EXT);
+	GEM_Rx_MsgBuf_Init(2,0x14520902,NO_MASK,IDE_EXT);
 
 	GEM_RX_Mask_MsgBuf_Init(0x04000006,MASK_BUFFER_3,  IDE_EXT);
-	GEM_Rx_MsgBuf_Init(12,0x1C530906,MASK_BUFFER_3,IDE_EXT); //Mask_Value 0x04000006
+	GEM_Rx_MsgBuf_Init(3,0x1C530906,MASK_BUFFER_3,IDE_EXT); //Mask_Value 0x04000006
 
-	GEM_Rx_MsgBuf_Init(13,0x3AA,NO_MASK,IDE_STD);
+	GEM_Rx_MsgBuf_Init(4,0x3AA,NO_MASK,IDE_STD);
 
 	GEM_RX_Mask_MsgBuf_Init(0x706,MASK_BUFFER_2,  IDE_STD);
-	GEM_Rx_MsgBuf_Init(14,0x7A8,MASK_BUFFER_2,IDE_STD); //Mask_Value 0x706
-	GEM_Rx_MsgBuf_Init(15,0x150,NO_MASK,IDE_STD);
+	GEM_Rx_MsgBuf_Init(5,0x7A8,MASK_BUFFER_2,IDE_STD); //Mask_Value 0x706
+	GEM_Rx_MsgBuf_Init(6,0x150,NO_MASK,IDE_STD);
 
 
 
@@ -299,7 +299,6 @@ void GEM_CAN_Init_new(uint8_t Baud_Rate)
     //MY_Rx_MsgBuf_Init(15,0x1C530902); 
     MY_Rx_MsgBuf_Init(7,0x7DF);
     MY_Tx_MsgBuf_Init(13,0x7DA,8);
-    MY_Tx_MsgBuf_Init(0,0,8);
 	
    //clear_CAN_data();
 }
@@ -521,57 +520,7 @@ void GEM_RX_Mask_MsgBuf_Init(uint32_t rx_mask_ID, uint8_t Mask_Buffer, uint8_t e
 * Arguments    : 
 * Return Value : None
 ***********************************************************************************************************************/
-void GEM_Tx_MsgBuf_Processing_new(uint8_t buffer_number, CAN_TX_Message_t *CAN_TX_Message)
-{
-	uint32_t	MsgBuf_address;
-	uint8_t data_cnt;
-	
-	MsgBuf_address = (MSGBUF_BASE_ADD + (0x10 * buffer_number));	// Set CAN message buffer[n] register address
-	uint16_t  *C0MCTRLm = ((uint16_t *)(MsgBuf_address + 0x0e));		// Check TRQ bit
-	uint8_t *C0MDBxm = ((uint8_t *)(MsgBuf_address));
-	uint8_t *C0MDLCm = ((uint8_t *)(MsgBuf_address + 0x08));
-	uint8_t *C0MCONFm = ((uint8_t *)(MsgBuf_address + 0x09));
-	uint16_t *C0MIDHm = ((uint16_t *)(MsgBuf_address + 0x0a));
-	uint16_t *C0MIDLm = ((uint16_t *)(MsgBuf_address + 0x0c));
-	while (( (*C0MCTRLm) & 0x0002) != 0)
-	{
-		NOP();
-	}
-	
-	*C0MCTRLm = 0x0001;
-	if(((*C0MCTRLm) & 0x0001) == 0)
-	{
-		if(CAN_TX_Message->m_nDlc <= 8)
-		{
-			if ((CAN_TX_Message->m_nExtFlg == 1) && (CAN_TX_Message->CAN_Msg_ID > 0x7FF))
-			{
-				*C0MIDHm = (uint32_t) CAN_TX_Message->CAN_Msg_ID;   			
-				*C0MIDLm = (uint32_t)((CAN_TX_Message->CAN_Msg_ID >> 16) | 0x8000); 	//C0MIDHm
-			}
-			else
-			{
-				*C0MIDHm = 0x0000;   			//standard frame,C0MIDLm=0x0000;
-				*C0MIDLm = ((CAN_TX_Message->CAN_Msg_ID << 2) & 0x1FFC); 	//C0MIDHm
-			}
-			*C0MDLCm = CAN_TX_Message->m_nDlc;
-			*C0MCONFm = ((*C0MCONFm) | (CAN_TX_Message->m_nRtr << 6));
-			for(data_cnt = 0 ; ((data_cnt < CAN_TX_Message->m_nDlc) && (data_cnt<8)) ; data_cnt++)
-			{
-				C0MDBxm = C0MDBxm + data_cnt;
-				*C0MDBxm = CAN_TX_Message->m_nData[data_cnt];
-			}
-		}
-		*C0MCTRLm = 0x0100;
-		*C0MCTRLm = 0x0200;
-	}
-	/*while (( (*C0MCTRLm) & 0x0002) == 0)
-	{
-		NOP();
-	}*/
-	
-
-}
-/*void GEM_Tx_MsgBuf_Processing(uint8_t buffer_number,uint8_t tx_msg_DLC,uint8_t* tx_msg_data)
+void GEM_Tx_MsgBuf_Processing(uint8_t buffer_number,uint8_t tx_msg_DLC,uint8_t* tx_msg_data)
 {
 	uint32_t	MsgBuf_address;
 	uint16_t  C0MCTRLm;
@@ -612,7 +561,7 @@ void GEM_Tx_MsgBuf_Processing_new(uint8_t buffer_number, CAN_TX_Message_t *CAN_T
 		NOP();
 	}
 	return;
-}*/
+}
 
 //----------------------------------------------------------------------------------------------------------------
 /***********************************************************************************************************************

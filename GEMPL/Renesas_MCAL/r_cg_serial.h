@@ -23,7 +23,7 @@
 * Device(s)    : R5F10DMF
 * Tool-Chain   : CCRL
 * Description  : This file implements device driver for Serial module.
-* Creation Date: 07-10-2023
+* Creation Date: 11-08-2023
 ***********************************************************************************************************************/
 
 #ifndef SERIAL_H
@@ -339,12 +339,7 @@ Macro definitions (Register bit)
 Macro definitions
 ***********************************************************************************************************************/
 #define _0400_CSI00_DIVISOR                      (0x0400U)
-#define _9E00_IIC11_DIVISOR                      (0x9E00U)
-#define IIC11_WAITTIME                           (13U) /* set wait time to 5 us */
-#define IIC11_WAITTIME_2                         (53U) /* set wait time to 20 us */
 
-/* Selection of 16-bit counter output clock (UF0BRS7 - UF0BRS0) */
-#define _0683_UARTF0_K_VALUE                     (0x0683U)
 /***********************************************************************************************************************
 Typedef definitions
 ***********************************************************************************************************************/
@@ -358,28 +353,7 @@ void R_CSI00_Start(void);
 void R_CSI00_Stop(void);
 MD_STATUS R_CSI00_Send(uint8_t * const tx_buf, uint16_t tx_num);
 static void r_csi00_callback_sendend(void);
-void R_SAU1_Create(void);
-void R_IIC11_Create(void);
-void R_IIC11_Master_Send(uint8_t adr, uint8_t * const tx_buf, uint16_t tx_num);
-void R_IIC11_Master_Receive(uint8_t adr, uint8_t * const rx_buf, uint16_t rx_num);
-void R_IIC11_Stop(void);
-void R_IIC11_StartCondition(void);
-void R_IIC11_StopCondition(void);
-static void r_iic11_callback_master_error(MD_STATUS flag);
-static void r_iic11_callback_master_receiveend(void);
-static void r_iic11_callback_master_sendend(void);
 
 /* Start user code for function. Do not edit comment generated here */
 /* End user code. Do not edit comment generated here */
-
-void R_UARTF0_Create(void);
-void R_UARTF0_Start(void);
-void R_UARTF0_Stop(void);
-MD_STATUS R_UARTF0_Send(uint8_t * const tx_buf, uint16_t tx_num);
-MD_STATUS R_UARTF0_Receive(uint8_t * const rx_buf, uint16_t rx_num);
-static void r_uartf0_callback_receiveend(void);
-static void r_uartf0_callback_sendend(void);
-static void r_uartf0_callback_error(uint8_t err_type);
-static void r_uartf0_callback_softwareoverrun(uint16_t rx_data);
-
 #endif

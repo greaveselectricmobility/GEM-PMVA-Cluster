@@ -27,7 +27,7 @@ void GEM_Limp_Home_Mode_Error(Cluster_Data_t *Cluster_Data);
 void GEM_Ready_Indication ( Cluster_Data_t *Cluster_Data );
 void GEM_Vehicle_Modes(Cluster_Data_t *Cluster_Data);
 void GEM_SOC(Cluster_Data_t *Cluster_Data);
-uint8_t GEM_SOC_Bar_Logic(int soc_percentage)  ;
+void GEM_SOC_Bar_Logic(int soc_percentage)  ;
 void GEM_Speed_Display(Cluster_Data_t *Cluster_Data);
 void GEM_SOC_Display(Cluster_Data_t *Cluster_Data);
 void GEM_Brake_fluid(Cluster_Data_t *Cluster_Data);

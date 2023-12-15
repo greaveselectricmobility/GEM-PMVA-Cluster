@@ -13,7 +13,6 @@
 #include "Digital_Outputs.h"
 #include "Digital_Inputs.h"
 #include "r_cg_serial.h"
-//#include "r_cg_adc.h"
 #include "r_cg_timer.h"
 #include "lcd.h"
 #include "my_can.h"
@@ -31,7 +30,6 @@ void Init(void)
 {
 	
 	Uc_5V_Control(OUTPUT_LOW);
-	UC_3V3_Control(OUTPUT_HIGH);
 	LCD_BackLight_Control(OUTPUT_LOW);
 	CAN_TX(OUTPUT_HIGH);
 	//CAN_RX(OUTPUT_LOW);
@@ -48,18 +46,19 @@ void Init(void)
 //	LED_OUTPUT_4(OUTPUT_HIGH);
 //	LED_OUTPUT_5(OUTPUT_HIGH);
 //	LED_OUTPUT_6(OUTPUT_HIGH);
+	
+	
+	
 	//gem_odo_update((uint32_t)100000);
 	GEM_Mem_Init();
 	GEM_Trip_Odo_B_Reset();
 	R_TAU0_Channel0_Start();
-	//GEM_CAN_Init_new(CAN_BAUD_RATE);
-	GGEM_CAN_Init_new(CAN_BAUD_RATE);
-	CAN_STANDBY_Output_Control(OUTPUT_LOW);
-
-	Set_LCD_Data(0x00);
 	R_CSI00_Start();
 	initLCM();
-	R_UARTF0_Start();
-	disp_lattice();
+	GEM_CAN_Init_new(CAN_BAUD_RATE);
+	CAN_STANDBY_Output_Control(OUTPUT_LOW);
+	
+	
+	
 }
 

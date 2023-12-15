@@ -25,13 +25,11 @@ void Thermal_Runaway_symbol_check(Cluster_Data_t *Cluster_Data,uint32_t gem_time
     if (Cluster_Data->CAN_Data.CAN_RX_Data_Bit.SGNL.THRMLRUNWY_STS == 0x01)
     {
         Thermal_Runaway_Symbol_State = ON;
-		Cluster_Data->CAN_Tx_TT.Thermal_Run_Away = 2;
-
+        
     }
     else
     {
         Thermal_Runaway_Symbol_State =OFF;
-		Cluster_Data->CAN_Tx_TT.Thermal_Run_Away = 0;
     }
     gem_err_indication(THERMAL_RUNAWAY_ON,Thermal_Runaway_Symbol_State);
     Cluster_Data->LCD_TellTale_Symbol.bit.Thermal_Runaway_TT = Thermal_Runaway_Symbol_State;

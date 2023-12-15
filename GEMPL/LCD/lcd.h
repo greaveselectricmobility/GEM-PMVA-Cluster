@@ -424,7 +424,7 @@ void parking_led_control(uint8_t status);
 void break_fluid_led_control(uint8_t status);
 void hazard_lamp_control(uint8_t right_bit,uint8_t left_bit);
 void thermal_runaway_indication(LCD_DATA_BUFF *lcd_data, uint8_t status);
-void _stand_indication(LCD_DATA_BUFF *lcd_data, uint8_t status);	
+void side_stand_indication(LCD_DATA_BUFF *lcd_data, uint8_t status);	
 void throttle_on_indication(LCD_DATA_BUFF *lcd_data, uint8_t status);
 void battery_on_indication(LCD_DATA_BUFF *lcd_data, uint8_t status);
 void temp_on_indication(LCD_DATA_BUFF *lcd_data, uint8_t status);

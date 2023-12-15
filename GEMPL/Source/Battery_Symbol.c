@@ -58,7 +58,6 @@ void Battery_symbol_Red_check(Cluster_Data_t *Cluster_Data,uint32_t gem_timer)
     {
         BMS_Symbol_State = BMS_Symbol_blink(20,ENABLE,gem_timer);
         Cluster_Data->LCD_TellTale_Symbol.bit.Battery_TT = 1;
-		Cluster_Data->CAN_Tx_TT.BMS_High_Temp = 1;
         
     }
     else if (Cluster_Data->CAN_Data.CAN_RX_Data_Bit.SGNL.BMS_ERR_DET == 0x01)
@@ -66,20 +65,17 @@ void Battery_symbol_Red_check(Cluster_Data_t *Cluster_Data,uint32_t gem_timer)
        	BMS_Symbol_blink(0,DISABLE,gem_timer);
         BMS_Symbol_State = ON;
         Cluster_Data->LCD_TellTale_Symbol.bit.Battery_TT = 1;
-		Cluster_Data->CAN_Tx_TT.BMS_Failure = 2;
     }
     else if (Cluster_Data->CAN_Value_error.bit.BMS_Value_Error == 0x01)
     {
         BMS_Symbol_State = BMS_Symbol_blink(10,ENABLE,gem_timer);
         Cluster_Data->LCD_TellTale_Symbol.bit.Battery_TT = 1;
-		Cluster_Data->CAN_Tx_TT.BMS_Failure = 1;
     }
     else
     {
         BMS_Symbol_State =OFF;
         BMS_Symbol_blink(0,DISABLE,gem_timer);
         Cluster_Data->LCD_TellTale_Symbol.bit.Battery_TT = 0;
-		Cluster_Data->CAN_Tx_TT.BMS_Failure = 0;
     }
     gem_err_indication(BATTERY_ON,BMS_Symbol_State);
     //BMS_Symbol_LCD(BMS_Symbol_State);

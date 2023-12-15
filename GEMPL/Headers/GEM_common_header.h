@@ -5,7 +5,7 @@
 * Tool-Chain   : CCRL
 * Description  : This header file contains common structures and macros that are utilized across multiple files.
 * Creation Date: 28-08-2023
-* Author       : Gokul Mohanasundaram
+* Author	   : Gokul Mohanasundaram
 ***********************************************************************************************************************/
 #ifndef COMMON_H
 #define COMMON_H
@@ -17,7 +17,6 @@
 
 #include "r_cg_macrodriver.h"
 #include "Feature_Config.h"
-
 
 
 #define LCD_DATA_ARRAY_Size 120
@@ -32,7 +31,7 @@
 #define CAN_TIMEOUT_VALUE 10
 
 #define UC_5V_Control_Output	 	    	P8_bit.no5
-#define UC_3V3_Control_Output	 	    	P1_bit.no4
+//#define UC_3V3_Control_Output	 	    	P8_bit.no4
 #define LCD_BackLight_Control_Output 		P8_bit.no4
 #define CAN_STB_OUTPUT 			        P3_bit.no7
 #define Buzzer_Enable_Output		    	P9_bit.no3
@@ -136,13 +135,7 @@
 #define MASK_BUFFER_3 3
 #define MASK_BUFFER_4 4
 
-typedef struct CAN_TX_Message_t{
-    uint32_t CAN_Msg_ID;
-    uint8_t m_nExtFlg;
-    uint8_t m_nDlc;
-    uint8_t m_nData[8];
-    uint8_t m_nRtr;
-}CAN_TX_Message_t;
+
 typedef union BYTE_t{
 	unsigned char byte;
 	struct{
@@ -309,46 +302,9 @@ typedef union CAN_Value_error_t{
 		unsigned char BMS_Value_Error :1;
 		//unsigned char MCU_Value_Error :1;
 		unsigned char Cluster_Calc_Value_Error :1;
+        unsigned char Value_Error :1;
 	}bit;
 }CAN_Value_error_t;
-
-
-typedef struct CAN_Tx_TT_t {
-    uint8_t MCU_Temp_High                   : 2;
-    uint8_t Motor_Temp_High                 : 2;
-    uint8_t Side_Stand_Indicator            : 2;
-    uint8_t Fault_in_Cluster                : 2;
-    uint8_t Battery_Failure                 : 2;
-    uint8_t BMS_Failure                     : 2;
-    uint8_t Thermal_Run_Away                : 2;
-    uint8_t BMS_High_Temp                   : 2;
-    uint8_t Telematics_Failure              : 2;
-    uint8_t VCU_Failure                     : 2;
-    uint8_t Motor_Failure                   : 2;
-    uint8_t MCU_Failure                     : 2;
-    uint8_t Speed_Mode                      : 2;
-    uint8_t Service_Alert_due_to_Fault      : 2;
-    uint8_t Service_Due_Alert               : 2;
-    uint8_t Limp_home_Mode                  : 2;
-    uint8_t High_Beam                       : 2;
-    uint8_t Hazard                          : 2;
-    uint8_t Aux_Battery_Charging            : 2;
-    uint8_t Main_Battery_charging_status    : 2;
-    uint8_t Reverse_Status                  : 2;
-    uint8_t Ready_status                    : 2;
-    uint8_t Right_Turn_indicator            : 2;
-    uint8_t Left_Turn_Indicator             : 2;
-    uint8_t Luggage_box_lamp_on             : 2;
-    uint8_t Key_fob_not_near_vehicle        : 2;
-    uint8_t Key_fob_battery_low             : 2;
-    uint8_t Throttle_Failure                : 2;
-    uint8_t Reserved                        : 2;
-    uint8_t Buzzer                          : 2;
-    uint8_t DC_DC_Converter_failure         : 2;
-    uint8_t Brake_Failure_alert             : 2;
-    
-} CAN_Tx_TT_t;
-
 
 typedef struct Cluster_Data_t{
     uint8_t Vehicle_Speed;
@@ -375,11 +331,7 @@ typedef struct Cluster_Data_t{
     Digital_Input_Pin_t Digital_Input_Pin; 
     LCD_Telltale_Symbol_t LCD_TellTale_Symbol;
     LED_Telltale_Symbol_t LED_Telltale_Symbol;
-    CAN_Tx_TT_t            CAN_Tx_TT;
-    uint8_t cluster_fault;
-}  Cluster_Data_t;
-
-
+}   Cluster_Data_t;
 
 
 /*CAN SIGNAL STATE*/

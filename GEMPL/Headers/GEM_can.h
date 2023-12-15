@@ -52,8 +52,7 @@
 void GEM_CAN_MsgBuf_Init(void);
 void GEM_CAN_Init_new(uint8_t Baud_Rate);
 void GEM_CAN_Init(uint8_t Baud_Rate);
-//void MY_Tx_MsgBuf_Processing(uint8_t ,uint8_t  ,uint8_t* );
-void GEM_Tx_MsgBuf_Processing(uint8_t buffer_number, uint8_t tx_msg_DLC,uint8_t* tx_msg_data);
+void MY_Tx_MsgBuf_Processing(uint8_t ,uint8_t  ,uint8_t* );
 //void GEM_Rx_MsgBuf_Init(uint8_t  ,unsigned int, uint8_t Mask_Buffer);
 void GEM_Rx_MsgBuf_Init(uint8_t buffer_number,uint32_t rx_mask_ID, uint8_t Mask_Buffer, uint8_t extid);
 void GEM_RX_Mask_MsgBuf_Init(uint32_t rx_mask_ID, uint8_t Mask_Buffer, uint8_t extid);
@@ -67,7 +66,6 @@ void GEM_CAN_SleepMode_Release(void);
 void GEM_CAN_StopMode_Release(void);
 void GEM_CAN_StopMode_Setting(void);
 void  GEM_CAN_SleepMode_Setting(void);
-
 static void __near GEM_Rx_MsgBuf_Processing(void);
 static void __near GEM_INT_Tx(void);
 
@@ -78,14 +76,6 @@ void Get_CAN_Data(CAN_RX_Data_t *Data);
 int16_t get_GEM_Wheel_RPM(void);
 
 void GEM_CAN_Timeout_increment_counter(uint32_t gem_timer);
-
-void GEM_CAN_TX(Cluster_Data_t *Cluster_Data);
-
-void Gokul_GEM_Tx_MsgBuf_Init(uint8_t buffer_number);
-
-void GGEM_CAN_Init_new(uint8_t Baud_Rate);
-void GGEM_CAN_MsgBuf_Init(void);
-void GGEM_Tx_MsgBuf_Processing_new(uint8_t buffer_number, CAN_TX_Message_t *CAN_TX_Message);
 //----------------------------------------------------------------------------------------------------------------
 
 #endif /* my_can_H_ */

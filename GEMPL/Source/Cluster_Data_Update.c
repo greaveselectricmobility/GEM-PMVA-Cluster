@@ -15,6 +15,8 @@
 #include "Calculations.h"
 #include "Digital_Inputs.h"
 
+
+
 /***********************************************************************************************************************
 * Function Name: SOC_Check
 * Description  : This function is to check the boundary conditions of the SOC value.
